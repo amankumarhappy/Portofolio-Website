@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Visionary's Roadmap</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+
+[x-cloak] { display: none !important; }
+        .bg-warm { background: linear-gradient(135deg, #FF9D6C 0%, #BB4E75 100%); }
+        .bg-cool { background: linear-gradient(135deg, #6FB1FC 0%, #4364F7 100%); }
+        .bg-moderate { background: linear-gradient(135deg, #7DE2FC 0%, #B9B6E5 100%); }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .float { animation: float 6s ease-in-out infinite; }
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00c6ff, 0 0 20px #00c6ff; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00c6ff, 0 0 40px #00c6ff; }
+        }
+
+        /* Navigation styles */
+        nav {
+            background: #333;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00c6ff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #00c6ff;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Main content styles */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #0072ff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #00c6ff;
+            padding-bottom: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background-color: #00c6ff;
+            animation: slide-in 1s ease-out forwards;
+        }
+
+        @keyframes slide-in {
+            100% { left: 0; }
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        ul li::before {
+            content: '➤';
+            position: absolute;
+            left: 0;
+            color: #00c6ff;
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateX(10px);
+        }
+
+        ul li:hover::before {
+            color: #0072ff;
+            transform: scale(1.2);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,114,255,0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            transform: rotate(90deg);
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #00c6ff;
+            animation: move 25s infinite linear;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        /* New styles for social media links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* New styles for embedded website */
+        .embedded-website-container {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out;
+        }
+
+        .embedded-website {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Particle animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        /* New animation for opening iframe */
+        @keyframes slideDown {
+            from {
+                height: 0;
+            }
+            to {
+                height: 500px;
+            }
+        }
+
+        .slide-down {
+            animation: slideDown 0.5s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+
+    <header class="fade-in">
+        <h1>Future Visionary's Roadmap</h1>
+        <p>Building an Empire from Zero to Hero</p>
+        <div class="social-links">
+            <a href="https://amankumarhappy.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Personal Website">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+                <span class="visually-hidden">Personal Website</span>
+            </a>
+            <a href="https://amankumarhappy.blogspot.com/" target="_blank" rel="noopener noreferrer" aria-label="Blog">
+                <i class="fab fa-blogger" aria-hidden="true"></i>
+                <span class="visually-hidden">Blog</span>
+            </a>
+            <a href="https://www.instagram.com/amankumarhappy1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+                <span class="visually-hidden">Instagram</span>
+            </a>
+            <a href="https://www.linkedin.com/in/amankumarhappy/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <span class="visually-hidden">LinkedIn</span>
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#books">Books</a></li>
+            <li><a href="#cities">Cities to Explore</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#tools">Tools</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="goals" class="slide-in-left">
+            <h2>Goals and Focus</h2>
+            <p>2025: 90% Learning, 10% Execution</p>
+            <p>2026: 50% Execution, 50% Learning</p>
+            <button class="btn" onclick="openModal('goalsModal')">Learn More</button>
+        </section>
+
+        <section id="skills" class="slide-in-right">
+            <h2>Skills to Acquire</h2>
+            <ul>
+                <li>Problem-Solving and Logical Thinking</li>
+                <li>Technical Proficiency (Python, React.js, Node.js)</li>
+                <li>Entrepreneurship and Business Skills</li>
+                <li>Design and Content Creation</li>
+                <li>Financial Literacy and Investments</li>
+                <li>Public Speaking and Leadership</li>
+            </ul>
+            <button class="btn" onclick="openModal('skillsModal')">Explore Full Skill Set</button>
+        </section>
+
+        <section id="books" class="slide-in-left">
+            <h2>Books to Read</h2>
+            <ul>
+                <li>Personal Growth: "Atomic Habits" by James Clear</li>
+                <li>Entrepreneurship: "The Lean Startup" by Eric Ries</li>
+                <li>Investments: "The Intelligent Investor" by Benjamin Graham</li>
+                <li>Technology: "AI Superpowers" by Kai-Fu Lee</li>
+                <li>Leadership: "Start with Why" by Simon Sinek</li>
+                <li>Creativity: "Steal Like an Artist" by Austin Kleon</li>
+                <li>Philosophy: "Sapiens" by Yuval Noah Harari</li>
+            </ul>
+            <button class="btn" onclick="openModal('booksModal')">Full Reading List</button>
+        </section>
+
+        <section id="cities" class="slide-in-right">
+            <h2>Cities to Explore</h2>
+            <ul>
+                <li>Varanasi, Uttar Pradesh</li>
+                <li>Rishikesh, Uttarakhand</li>
+                <li>Jaipur, Rajasthan</li>
+                <li>Hampi, Karnataka</li>
+                <li>McLeod Ganj, Himachal Pradesh</li>
+            </ul>
+            <button class="btn" onclick="openModal('citiesModal')">View All Cities</button>
+        </section>
+
+        <section id="courses" class="slide-in-left">
+            <h2>Courses to Complete</h2>
+            <ul>
+                <li>Stock Market Basics and Investing</li>
+                <li>Python for Data Science and Machine Learning</li>
+                <li>Startup Essentials and Entrepreneurship</li>
+                <li>Video Editing and Content Creation</li>
+                <li>Public Speaking and Communication</li>
+                <li>UI/UX Design Fundamentals</li>
+            </ul>
+            <button class="btn" onclick="openModal('coursesModal')">Full Course List</button>
+        </section>
+
+        <section id="website-preview" class="slide-in-right">
+            <h2>Website Preview</h2>
+            <button class="btn" id="toggleIframe">Show/Hide Website</button>
+            <div class="embedded-website-container">
+                <iframe src="https://amankumarhappy.netlify.app/" class="embedded-website"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="goalsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detailed Goals and Focus</h2>
+            <h3>2025: Learning Phase (90% Learning, 10% Execution)</h3>
+            <ul>
+                <li>Master fundamental and advanced skills in technology, finance, and entrepreneurship</li>
+                <li>Expand knowledge through books, courses, workshops, and research</li>
+                <li>Test ideas with small projects, prototypes, and content creation</li>
+            </ul>
+            <h3>2026: Execution Phase (50% Execution, 50% Learning)</h3>
+            <ul>
+                <li>Launch a small-scale version of your business idea</li>
+                <li>Build a team or network of like-minded individuals</li>
+                <li>Continue learning and staying updated on trends</li>
+                <li>Grow investment portfolio</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="skillsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comprehensive Skill Development Roadmap</h2>
+            
+            <h3>Academic and Career Skills</h3>
+            <ul>
+                <li><strong>Problem-Solving</strong>
+                    <ul>
+                        <li>Data Structures and Algorithms</li>
+                        <li>Competitive Programming</li>
+                        <li>Logical Reasoning Techniques</li>
+                    </ul>
+                </li>
+                <li><strong>Technical Proficiency</strong>
+                    <ul>
+                        <li>Python Programming</li>
+                        <li>React.js and Node.js</li>
+                        <li>Database Management (SQL, NoSQL)</li>
+                        <li>Cloud Platforms (AWS, Google Cloud)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Entrepreneurship and Business</h3>
+            <ul>
+                <li>Digital and Offline Marketing Strategies</li>
+                <li>Financial Modeling and Budgeting</li>
+                <li>Negotiation and Pitching Skills</li>
+                <li>Product Management</li>
+                <li>Startup Fundamentals</li>
+            </ul>
+
+            <h3>Creative and Content Skills</h3>
+            <ul>
+                <li>Design Tools (Canva, Figma, Photoshop)</li>
+                <li>UI/UX Design Basics</li>
+                <li>Video Editing (CapCut, Premiere Pro)</li>
+                <li>Content Writing and SEO</li>
+                <li>Storytelling and Scripting</li>
+            </ul>
+
+            <h3>Financial Literacy</h3>
+            <ul>
+                <li><strong>Personal Finance</strong>
+                    <ul>
+                        <li>Learn budgeting and expense tracking</li>
+                        <li>Understand the importance of savings and building an emergency fund</li>
+                    </ul>
+                </li>
+                <li><strong>Investments</strong>
+                    <ul>
+                        <li>Study stock market basics and mutual funds</li>
+                        <li>Learn about startups and angel investing</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Soft Skills and Leadership</h3>
+            <ul>
+                <li>Public Speaking</li>
+                <li>Team Management</li>
+                <li>Conflict Resolution</li>
+                <li>Emotional Intelligence</li>
+                <li>Networking</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="booksModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comprehensive Reading List</h2>
+            
+            <h3>Personal Growth</h3>
+            <ul>
+                <li>"Atomic Habits" by James Clear</li>
+                <li>"The 7 Habits of Highly Effective People" by Stephen Covey</li>
+                <li>"Mindset: The New Psychology of Success" by Carol S. Dweck</li>
+                <li>"Deep Work" by Cal Newport</li>
+                <li>"The Power of Now" by Eckhart Tolle</li>
+            </ul>
+
+            <h3>Entrepreneurship</h3>
+            <ul>
+                <li>"The Lean Startup" by Eric Ries</li>
+                <li>"Zero to One" by Peter Thiel</li>
+                <li>"The $100 Startup" by Chris Guillebeau</li>
+                <li>"Hooked: How to Build Habit-Forming Products" by Nir Eyal</li>
+                <li>"Rework" by Jason Fried & David Heinemeier Hansson</li>
+            </ul>
+
+            <h3>Investments and Finance</h3>
+            <ul>
+                <li>"The Intelligent Investor" by Benjamin Graham</li>
+                <li>"Rich Dad Poor Dad" by Robert T. Kiyosaki</li>
+                <li>"Common Stocks and Uncommon Profits" by Philip A. Fisher</li>
+                <li>"The Psychology of Money" by Morgan Housel</li>
+                <li>"One Up On Wall Street" by Peter Lynch</li>
+            </ul>
+
+            <h3>Technology and Innovation</h3>
+            <ul>
+                <li>"AI Superpowers" by Kai-Fu Lee</li>
+                <li>"Life 3.0" by Max Tegmark</li>
+                <li>"The Innovator's Dilemma" by Clayton M. Christensen</li>
+                <li>"Superintelligence" by Nick Bostrom</li>
+                <li>"Homo Deus" by Yuval Noah Harari</li>
+            </ul>
+
+            <h3>Leadership and Influence</h3>
+            <ul>
+                <li>"How to Win Friends and Influence People" by Dale Carnegie</li>
+                <li>"Leaders Eat Last" by Simon Sinek</li>
+                <li>"The Art of War" by Sun Tzu</li>
+                <li>"Start with Why" by Simon Sinek</li>
+                <li>"Dare to Lead" by Brené Brown</li>
+            </ul>
+
+            <h3>Creativity and Content Creation</h3>
+            <ul>
+                <li>"Steal Like an Artist" by Austin Kleon</li>
+                <li>"The War of Art" by Steven Pressfield</li>
+                <li>"Show Your Work!" by Austin Kleon</li>
+                <li>"Story" by Robert McKee</li>
+                <li>"The Creative Curve" by Allen Gannett</li>
+            </ul>
+
+            <h3>Philosophy and Perspective</h3>
+            <ul>
+                <li>"Meditations" by Marcus Aurelius</li>
+                <li>"Sapiens: A Brief History of Humankind" by Yuval Noah Harari</li>
+                <li>"Man's Search for Meaning" by Viktor E. Frankl</li>
+                <li>"The Alchemist" by Paulo Coelho</li>
+                <li>"Thinking, Fast and Slow" by Daniel Kahneman</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="citiesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cities to Explore on a Budget</h2>
+            <ul>
+                <li>Varanasi, Uttar Pradesh</li>
+                <li>Rishikesh, Uttarakhand</li>
+                <li>Jaipur, Rajasthan</li>
+                <li>Hampi, Karnataka</li>
+                <li>McLeod Ganj, Himachal Pradesh</li>
+                <li>Pondicherry, Tamil Nadu</li>
+                <li>Darjeeling, West Bengal</li>
+                <li>Udaipur, Rajasthan</li>
+                <li>Gokarna, Karnataka</li>
+                <li>Amritsar, Punjab</li>
+            </ul>
+            <h3>Budget Travel Tips</h3>
+            <ul>
+                <li>Use sleeper class trains or state buses for travel</li>
+                <li>Stay in budget hostels or guesthouses</li>
+                <li>Eat at local dhabas or street vendors</li>
+                <li>Opt for free walking tours and nature treks</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="coursesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comprehensive Learning Courses</h2>
+            
+            <h3>Technology and Coding</h3>
+            <ul>
+                <li>Python for Data Science and Machine Learning</li>
+                <li>Full-Stack Web Development</li>
+                <li>Cloud Computing Fundamentals</li>
+                <li>IoT Basics (IoT courses from Cisco Networking Academy)</li>
+                <li>Artificial Intelligence and Machine Learning</li>
+                <li>Blockchain and Cryptocurrency Basics</li>
+            </ul>
+
+            <h3>Business and Entrepreneurship</h3>
+            <ul>
+                <li>Pitching and Fundraising Techniques</li>
+                <li>Stock Market Basics (e.g., Zerodha Varsity or NSE Academy)</li>
+                <li>Startup Essentials</li>
+                <li>Personal Finance Management (Coursera/Skillshare)</li>
+                <li>Digital Marketing Masterclass</li>
+                <li>Financial Modeling and Analysis</li>
+                <li>Business Model Canvas Workshop</li>
+                <li>Venture Capital and Funding Strategies</li>
+            </ul>
+
+            <h3>Design and Content Creation</h3>
+            <ul>
+                <li>UI/UX Design Fundamentals</li>
+                <li>Video Production and Editing</li>
+                <li>Content Marketing and SEO</li>
+                <li>Graphic Design Essentials</li>
+                <li>Storytelling and Copywriting</li>
+            </ul>
+
+            <h3>Personal Development</h3>
+            <ul>
+                <li>Public Speaking Mastery</li>
+                <li>Time Management and Productivity</li>
+                <li>Emotional Intelligence Workshop</li>
+                <li>Negotiation and Communication Skills</li>
+                <li>Leadership and Team Management</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        // Close button functionality
+        var closeButtons = document.getElementsByClassName("close");
+        for (var i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                var modal = this.closest('.modal');
+                closeModal(modal);
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target);
+            }
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300);
+        }
+
+        // Scroll animation
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimation() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (isInViewport(section)) {
+                    section.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation);
+
+        // Particle animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 5 + 1;
+                const duration = Math.random() * 20 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animation = `float ${duration}s linear infinite`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Toggle iframe visibility
+        const toggleIframeBtn = document.getElementById('toggleIframe');
+        const iframeContainer = document.querySelector('.embedded-website-container');
+        let isIframeVisible = false;
+
+        toggleIframeBtn.addEventListener('click', () => {
+            if (isIframeVisible) {
+                iframeContainer.style.height = '0';
+                isIframeVisible = false;
+            } else {
+                iframeContainer.style.height = '500px';
+                isIframeVisible = true;
+            }
+        });
+    </script>
+</body>
+</html>
+

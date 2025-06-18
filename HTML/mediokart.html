@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +89,57 @@
       color: #00c6ff;
     }
 
+    /* Join Button Styles */
+    .join-btn {
+      background: linear-gradient(135deg, #00c6ff, #0099cc);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .join-btn:hover {
+      background: linear-gradient(135deg, #0099cc, #007299);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+      text-decoration: none;
+    }
+
+    /* Floating Join Button */
+    .floating-join-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #00c6ff, #0099cc);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 198, 255, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-join-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0, 198, 255, 0.6);
+      text-decoration: none;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -100,6 +152,14 @@
         flex-direction: column;
         text-align: center;
       }
+      
+      .floating-join-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -108,7 +168,7 @@
   <header>
     <img src="https://i.ibb.co/9khbLXzP/mediokart-1.jpg" alt="Mediokart Logo" />
     <h1>Join Mediokart</h1>
-    <p>Be a part of India’s tech-driven healthcare revolution</p>
+    <p>Be a part of India's tech-driven healthcare revolution</p>
   </header>
 
   <section>
@@ -123,11 +183,15 @@
         <a href="https://www.instagram.com/mediokart_/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
         <a href="https://x.com/Mediokart" target="_blank"><i class="fab fa-x-twitter"></i>X (Twitter)</a>
       </div>
+      <a href="https://forms.gle/VwWMvUGjXcLhiqVk6" target="_blank" class="join-btn">
+        <i class="fas fa-handshake"></i> Join Our Team
+      </a>
     </div>
 
+    
     <div class="card founder">
       <img src="https://i.ibb.co/nXDTrcw/1.jpg" alt="Aman Kumar Happy">
-      <div class="founder-info">
+       <div class="founder-info">
         <h2>👤 Aman Kumar Happy</h2>
         <p><strong>Founder & CEO</strong> (Solo Founder)</p>
         <p>Currently building Mediokart from the ground up. Passionate about healthcare, AI, and innovation. Looking for like-minded collaborators to join the journey.</p>
@@ -144,6 +208,11 @@
       </div>
     </div>
   </section>
+
+  <!-- Floating Join Button -->
+  <a href="https://forms.gle/VwWMvUGjXcLhiqVk6" target="_blank" class="floating-join-btn" title="Join Mediokart">
+    <i class="fas fa-plus"></i>
+  </a>
 
   <footer>
     &copy; 2025 Mediokart. All Rights Reserved.

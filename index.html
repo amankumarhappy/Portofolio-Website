@@ -487,36 +487,53 @@
                         </a>
                     </div>
                 </div>
-              <form class="contact-form" action="https://formsubmit.co/amankumarhappy1@gmail.com" method="POST">
+              <!-- Full Contact Form -->
+<form class="contact-form" action="https://formsubmit.co/amankumarhappy1@gmail.com" method="POST">
     <!-- FormSubmit Configuration -->
-    <input type="hidden" name="_subject" value="New Contact Form Submission from Website">
+    <input type="hidden" name="_subject" value="📩 New Contact Form Submission from Website">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_autoresponse" value="Thank you for contacting me! I'll get back to you soon.">
-    
+    <input type="hidden" name="_autoresponse" value="✅ Thank you for contacting me! I’ll get back to you as soon as possible.">
+    <input type="hidden" name="_next" value="https://amankumarhappy.netlify.app/thank-you.html"> <!-- Redirect page after submit -->
+
     <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="Name" required>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="Name" placeholder="Enter your name" required>
     </div>
+
     <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="Email" required>
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="Email" placeholder="Enter your email" required>
     </div>
+
     <div class="form-group">
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="Subject" required>
+        <input type="text" id="subject" name="Subject" placeholder="Enter subject" required>
     </div>
+
     <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="Message" rows="5" required></textarea>
+        <textarea id="message" name="Message" rows="5" placeholder="Write your message here..." required></textarea>
     </div>
-    
-    <!-- Optional: redirect after submit -->
-    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-    <!-- Optional: honeypot to prevent spam -->
+
+    <!-- Anti-spam honeypot -->
     <input type="text" name="_gotcha" style="display:none">
+
     <button type="submit" class="submit-btn">Send Message</button>
 </form>
+
+<!-- Minimal Short Version -->
+<form action="https://formsubmit.co/amankumarhappy1@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Quick Contact Form Submission">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_autoresponse" value="Thanks for reaching out! I will reply soon.">
+    <input type="hidden" name="_next" value="https://amankumarhappy.netlify.app/thank-you.html">
+
+    <input type="text" name="name" placeholder="Enter your name" required>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Send</button>
+</form>
+
             </div>
         </section>
     </main>
@@ -639,6 +656,7 @@
 
 </body>
 </html>
+
 
 
 

@@ -719,16 +719,15 @@ let popupShown = false;
               emailjs.init("wInTxZEHbUCvh9SHh");
            })();
         
-           document.querySelector('.contact-form').addEventListener('submit', function(event) {
-              event.preventDefault();
-              
-              emailjs.sendForm('service_d4c67x7', 'template_udmm0o9', this)
-                .then(function() {
-                    console.log('SUCCESS!');
-                    alert('Message sent successfully!');
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    alert('Failed to send the message. Please try again.');
-                });
-           });
+         document.getElementById("contact-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  emailjs.sendForm("service_d4c67x7", "template_udmm0o9", this)
+    .then(() => {
+      alert("✅ Message sent successfully!");
+    }, (error) => {
+      alert("❌ Failed to send message: " + JSON.stringify(error));
+    });
+});
+
     

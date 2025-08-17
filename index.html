@@ -488,35 +488,13 @@
                     </div>
                 </div>
               <!-- Full Contact Form -->
-<form class="contact-form" action="https://formsubmit.co/amankumarhappy1@gmail.com" method="POST">
-    <!-- FormSubmit Configuration -->
-    <input type="hidden" name="_subject" value="📩 New Contact Form Submission from Website">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_autoresponse" value="✅ Thank you for contacting me! I’ll get back to you as soon as possible.">
-    <input type="hidden" name="_next" value="https://amankumarhappy.netlify.app/thank-you.html"> <!-- Redirect page after submit -->
-
-  <form id="contact-form">
-  <label>Name</label>
-  <input type="text" name="from_name" required />
-
-  <label>Email</label>
-  <input type="email" name="reply_to" required />
-
-  <label>Message</label>
-  <textarea name="message" required></textarea>
-
+<form action="https://formsubmit.co/amankumarhappy1@gmail.com" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
   <button type="submit">Send</button>
 </form>
 
-<!-- EmailJS Script -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("wInTxZEHbUCvh9SHh"); // ✅ Public Key
-  })();
-</script>
-<script src="script.js"></script>
 
 
 <!-- Minimal Short Version -->
@@ -653,6 +631,7 @@
 
 </body>
 </html>
+
 
 
 

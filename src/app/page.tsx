@@ -8,11 +8,13 @@ import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
+import ScrollUI from "@/components/ui/ScrollUI";
 import SmoothScroll from "@/components/utils/SmoothScroll";
 
 export default function Home() {
     return (
         <SmoothScroll>
+            <ScrollUI />
             <CustomCursor />
             <Navbar />
             {/*

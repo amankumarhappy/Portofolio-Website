@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Bot, Box, HeartPulse, ArrowRight, Zap } from "lucide-react";
+import { ExternalLink, Bot, Box, HeartPulse, ArrowRight, Zap, Shield } from "lucide-react";
 
 // ─── Mediokart Ecosystem ────────────────────────────────────────────────────
 const mediokartProjects = [
@@ -14,7 +14,7 @@ const mediokartProjects = [
         color: "#ff0055",
         glow: "rgba(255,0,85,0.25)",
         link: "#",
-        status: "building"
+        status: "building",
     },
     {
         title: "AuraBox",
@@ -25,7 +25,7 @@ const mediokartProjects = [
         color: "#00f3ff",
         glow: "rgba(0,243,255,0.25)",
         link: "#",
-        status: "building"
+        status: "building",
     },
     {
         title: "Mediobot",
@@ -36,7 +36,7 @@ const mediokartProjects = [
         color: "#0aff0a",
         glow: "rgba(10,255,10,0.2)",
         link: "#",
-        status: "building"
+        status: "building",
     },
 ];
 
@@ -45,22 +45,45 @@ const otherProjects = [
     {
         title: "NexFlow",
         role: "Hackathon Build",
-        desc: "AI workflow orchestration tool built at Hackatron 3.0, BIT Sindri. A concept I'm planning to build — not completed yet, but the idea is solid.",
+        desc: "AI workflow orchestration tool built at Hackatron 3.0, BIT Sindri. Streamlines AI-powered task pipelines — turning rough ideas into structured, automated workflows.",
         tags: ["AI", "Automation", "LLMs", "Workflow"],
         icon: Zap,
         color: "#a855f7",
         glow: "rgba(168,85,247,0.25)",
-        link: "#",
-        status: "planned",
-        event: "Built at Hackatron 3.0, BIT Sindri"
+        link: "https://nexfellow.vercel.app/",
+        status: "live",
+        event: "Built at Hackatron 3.0, BIT Sindri",
+        poweredBy: null,
+    },
+    {
+        title: "SkillChain",
+        role: "Hackathon Build · NexaForce",
+        desc: "Secure Certificate Verification on Polygon Blockchain. SkillChain uses Soulbound Tokens (SBTs) and IPFS to ensure the authenticity of certificates. Verify any credential instantly with complete transparency and tamper-proof security.",
+        tags: ["Blockchain", "Solidity", "Polygon", "SBT", "IPFS", "Web3"],
+        icon: Shield,
+        color: "#8b5cf6",
+        glow: "rgba(139,92,246,0.30)",
+        link: "https://newdelhihackathon.vercel.app/",
+        status: "live",
+        event: "New Delhi Hackathon · Team NexaForce",
+        poweredBy: "🔗 Powered by Polygon Blockchain · Built by NexaForce",
     },
 ];
 
+// ─── Status Badge ────────────────────────────────────────────────────────────
 function StatusBadge({ status }: { status: string }) {
     if (status === "planned") {
         return (
             <span className="text-xs font-mono px-3 py-1 rounded-full border border-yellow-400/30 bg-yellow-400/10 text-yellow-400">
                 🔧 Planning
+            </span>
+        );
+    }
+    if (status === "live") {
+        return (
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-full border border-emerald-400/40 bg-emerald-400/10 text-emerald-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Demo
             </span>
         );
     }
@@ -94,7 +117,7 @@ export default function Projects() {
                         Featured <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple">Works</span>
                     </h2>
                     <p className="text-gray-400 text-lg mt-4 max-w-xl">
-                        Flagship projects aimed at revolutionizing healthcare in India.
+                        Flagship projects aimed at revolutionizing healthcare in India — and beyond.
                     </p>
                 </motion.div>
 
@@ -115,7 +138,7 @@ export default function Projects() {
                     </div>
                 </motion.div>
 
-                {/* Mediokart cards — horizontal layout to show all 3 as one ecosystem */}
+                {/* Mediokart cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     {mediokartProjects.map((project, i) => (
                         <motion.div
@@ -238,12 +261,22 @@ export default function Projects() {
                                         </span>
                                         <StatusBadge status={project.status} />
                                     </div>
+
                                     {project.event && (
                                         <p className="text-xs font-mono text-gray-500 mb-2">📍 {project.event}</p>
                                     )}
+
                                     <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-2xl group-hover:text-gray-300 transition-colors">
                                         {project.desc}
                                     </p>
+
+                                    {/* Powered By badge (SkillChain only) */}
+                                    {project.poweredBy && (
+                                        <p className="text-xs font-mono text-violet-400/80 mb-4 border border-violet-500/20 bg-violet-500/5 rounded-lg px-3 py-2 w-fit">
+                                            {project.poweredBy}
+                                        </p>
+                                    )}
+
                                     <div className="flex flex-wrap gap-2">
                                         {project.tags.map((tag, t) => (
                                             <span
@@ -255,6 +288,30 @@ export default function Projects() {
                                         ))}
                                     </div>
                                 </div>
+
+                                {/* Live Demo CTA */}
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl border font-bold text-sm tracking-wider transition-all duration-300 hover:scale-105"
+                                    style={{
+                                        color: project.color,
+                                        borderColor: `${project.color}40`,
+                                        background: `${project.color}10`,
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        (e.currentTarget as HTMLElement).style.background = `${project.color}25`;
+                                        (e.currentTarget as HTMLElement).style.boxShadow = `0 0 20px ${project.color}40`;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        (e.currentTarget as HTMLElement).style.background = `${project.color}10`;
+                                        (e.currentTarget as HTMLElement).style.boxShadow = "";
+                                    }}
+                                >
+                                    <ExternalLink size={16} />
+                                    Live Demo
+                                </a>
                             </div>
                         </motion.div>
                     ))}

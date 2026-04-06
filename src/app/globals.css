@@ -17,9 +17,9 @@
 }
 
 html {
-  /* Smooth scroll — critical for UX continuity */
-  scroll-behavior: smooth;
-  /* NO scroll-snap — causes "page jump" */
+  /* Lenis takes over smooth scrolling — do NOT use scroll-behavior: smooth here,
+     it fights with Lenis and causes jitter. Lenis handles everything. */
+  scroll-behavior: auto;
   scroll-snap-type: none;
 }
 
@@ -29,10 +29,12 @@ body {
   font-family: 'Inter', sans-serif;
   /* Only block horizontal overflow, NOT vertical */
   overflow-x: hidden;
-  /* Ensure normal vertical scroll */
+  /* Ensure normal vertical scroll — Lenis needs this */
   overflow-y: auto;
   margin: 0;
   padding: 0;
+  /* Ensures GPU compositing for buttery scroll */
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ── Section base — critical for smooth transitions ── */
@@ -43,20 +45,21 @@ section {
 
 /* ── Custom Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1a1a2e;
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #00f3ff, #bc13fe);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f3ff44;
+  background: linear-gradient(to bottom, #00f3ff, #bc13fe);
+  box-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
 }
 
 /* ── Profile image — perfectly circular fix ── */

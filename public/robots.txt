@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amankumarhappy.vercel.app/sitemap.xml

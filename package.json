@@ -1,0 +1,39 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.96.1",
+    "@react-three/fiber": "^8.15.12",
+    "@studio-freight/react-lenis": "^0.0.47",
+    "clsx": "^2.1.0",
+    "framer-motion": "^12.29.2",
+    "gsap": "^3.12.5",
+    "lenis": "^1.0.42",
+    "lucide-react": "^0.309.0",
+    "next": "^14.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tech-stack-icons": "^3.5.8",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "@types/three": "^0.160.0",
+    "autoprefixer": "^10.4.23",
+    "eslint": "latest",
+    "eslint-config-next": "^14.2.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1",
+    "typescript": "latest"
+  }
+}

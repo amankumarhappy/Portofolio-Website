@@ -2,55 +2,66 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 /* ── SEO Metadata ── */
 export const metadata: Metadata = {
-    title: "Aman Kumar Happy | AI Developer & Mediokart Founder",
+    title: "Aman Kumar Happy | Founder Mediokart | B.Tech CSE Bihar | IDE Bootcamp Winner 2026",
     description:
-        "Aman Kumar Happy is a BTech CSE student, AI developer, and founder of Mediokart — building healthcare AI systems in India. Explore projects, skills, and innovations.",
+        "Aman Kumar Happy — student founder from Buxar, Bihar. Founder of Mediokart and builder of SAHAYAK, a WhatsApp health assistant for rural India. National Winner IDE Bootcamp 2026 (AICTE × MoE, NIT Patna). B.Tech CSE, GEC Buxar.",
     keywords: [
         "Aman Kumar Happy",
-        "AI developer India",
+        "Aman Kumar Buxar",
+        "Aman Happy Bihar",
         "Mediokart founder",
-        "BTech CSE portfolio",
-        "healthcare AI startup",
-        "full stack developer India",
-        "Aman Kumar developer",
-        "Aman Kumar BTech CSE Buxar",
-        "HealthTech Bihar",
+        "SAHAYAK WhatsApp health",
+        "IDE Bootcamp 2026 winner",
+        "Bihar student startup",
+        "GEC Buxar entrepreneur",
+        "amankumarhappy",
+        "student founder India",
+        "healthtech Bihar",
+        "Aman Kumar GEC Buxar",
+        "NexaForce Bihar",
+        "AICTE startup winner",
+        "WhatsApp health assistant India",
+        "Aman Kumar Happy LinkedIn",
+        "Who is Aman Kumar Happy",
+        "Aman Kumar from Buxar Bihar",
+        "IDE Bootcamp 2026 winner NIT Patna",
+        "SAHAYAK WhatsApp health assistant",
+        "BTech startup founder Bihar",
     ],
     authors: [{ name: "Aman Kumar Happy" }],
     creator: "Aman Kumar Happy",
-    metadataBase: new URL("https://amankumarhappy.vercel.app"),
+    metadataBase: new URL("https://amankumarhappy.com"),
     alternates: {
-        canonical: "/",
+        canonical: "https://amankumarhappy.com",
     },
     openGraph: {
         type: "website",
         locale: "en_IN",
-        url: "https://amankumarhappy.vercel.app",
-        title: "Aman Kumar Happy | AI Developer & Mediokart Founder",
+        url: "https://amankumarhappy.com",
+        title: "Aman Kumar Happy — Student Founder & Builder | Mediokart | Bihar",
         description:
-            "BTech CSE student building AI systems for healthcare — Mediokart, AuraBox, Mediobot. Core Team — Salesforce Community Bihar.",
+            "Building healthcare tools for the India that the internet forgot. National Winner IDE Bootcamp 2026. WhatsApp health assistant for rural India. B.Tech CSE, GEC Buxar.",
         siteName: "Aman Kumar Happy Portfolio",
         images: [
             {
-                url: "/My photo.png",
+                url: "https://amankumarhappy.com/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Aman Kumar Happy — AI Developer & Mediokart Founder",
+                alt: "Aman Kumar Happy — Student Founder Mediokart | Bihar",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Aman Kumar Happy | AI Developer & Mediokart Founder",
+        title: "Aman Kumar Happy | Founder Mediokart | Bihar",
         description:
-            "BTech CSE student building AI systems for healthcare — Mediokart, AuraBox, Mediobot.",
-        images: ["/My photo.png"],
+            "Student founder from Buxar, Bihar. Building SAHAYAK — WhatsApp health assistant for rural India. National IDE Bootcamp 2026 winner.",
+        images: ["https://amankumarhappy.com/og-image.jpg"],
     },
     robots: {
         index: true,
@@ -70,25 +81,18 @@ const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Aman Kumar Happy",
-    url: "https://amankumarhappy.vercel.app",
-    image: "https://amankumarhappy.vercel.app/My photo.png",
-    sameAs: [
-        "https://github.com/amankumarhappy",
-        "https://linkedin.com/in/amankumarhappy",
-        "https://medium.com/@amankumarhappy",
-        "https://www.youtube.com/@amankumarhappy",
-    ],
-    jobTitle: "AI Developer & Startup Founder",
-    description:
-        "BTech CSE student at Government Engineering College Buxar, founder of Mediokart, Core Team Member at Salesforce Community Bihar.",
+    alternateName: ["Aman Kumar", "Happy Singh", "Aman Kumar Buxar", "amankumarhappy"],
+    url: "https://amankumarhappy.com",
+    image: "https://amankumarhappy.com/My photo.png",
+    email: "amankumarhappy1@gmail.com",
+    jobTitle: "Founder",
     worksFor: {
         "@type": "Organization",
         name: "Mediokart",
-        description:
-            "A healthcare platform bridging pharmacies and patients using AI and IoT.",
+        url: "https://www.mediokart.in",
     },
     alumniOf: {
-        "@type": "EducationalOrganization",
+        "@type": "CollegeOrUniversity",
         name: "Government Engineering College, Buxar",
     },
     address: {
@@ -97,16 +101,45 @@ const jsonLd = {
         addressRegion: "Bihar",
         addressCountry: "IN",
     },
-    knowsAbout: [
-        "Artificial Intelligence",
-        "Healthcare Technology",
-        "Web Development",
-        "React",
-        "Next.js",
-        "Python",
-        "IoT",
+    sameAs: [
+        "https://www.linkedin.com/in/amankumarhappy/",
+        "https://github.com/amankumarhappy",
+        "https://www.mediokart.in",
+        "https://www.instagram.com/amankumarhappy1",
+        "https://medium.com/@amankumarhappy",
+        "https://x.com/AmanKumarHappy1",
+        "https://youtube.com/amankumarhappy",
+        "https://substack.com/@amankumarhappy",
+        "https://dev.to/amankumarhappy",
+        "https://producthunt.com/@amankumarhappy",
+        "https://quora.com/profile/Aman-Kumar-Happy",
     ],
+    description:
+        "B.Tech CSE student at GEC Buxar and Founder of Mediokart. National Winner IDE Bootcamp 2026 (AICTE × Ministry of Education) at NIT Patna. Building SAHAYAK — WhatsApp-based health assistant for rural Bihar.",
+    award: "National Winner – IDE Bootcamp 2026 Phase II, AICTE × Ministry of Education, NIT Patna",
 };
+
+/* ── Theme init script — prevents FOUC (flash of wrong theme) ── */
+const themeScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('akh-theme');
+    var manual = localStorage.getItem('akh-theme-manual') === 'true';
+    var theme;
+    if (stored && manual) {
+      theme = stored;
+    } else {
+      var hour = new Date().getHours();
+      theme = (hour >= 18 || hour < 6) ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.add('theme-' + theme);
+  } catch(e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('theme-dark');
+  }
+})();
+`;
 
 export default function RootLayout({
     children,
@@ -116,16 +149,20 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
+                {/* Anti-FOUC theme script — runs before CSS renders */}
+                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+
                 {/* Preconnect for performance */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
                 {/* JSON-LD Structured Data */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body className={clsx(inter.className, "bg-black text-white antialiased")}>
+            <body className={clsx(inter.className, "antialiased")}>
                 {children}
             </body>
         </html>

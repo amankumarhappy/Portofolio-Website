@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://amankumarhappy.com/sitemap.xml
 Sitemap: https://amankumarhappy.vercel.app/sitemap.xml

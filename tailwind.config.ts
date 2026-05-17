@@ -12,10 +12,10 @@ const config: Config = {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
                 neon: {
-                    blue: "#00f3ff",
-                    purple: "#bc13fe",
-                    green: "#0aff0a",
-                }
+                    blue: "var(--neon-blue)",
+                    purple: "var(--neon-purple)",
+                    green: "var(--neon-green)",
+                },
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

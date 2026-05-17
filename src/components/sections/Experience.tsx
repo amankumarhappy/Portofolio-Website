@@ -194,77 +194,85 @@ export default function Experience() {
                     <p className="text-gray-400 mt-4 text-lg">Click on any path to open details about it.</p>
                 </motion.div>
 
-                <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-6">
-                    {experiences.map((exp, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: Math.min(i * 0.05, 0.4) }}
-                            viewport={{ margin: "-100px" }}
-                            className="relative pl-6 md:pl-10"
-                        >
-                            {/* Timeline Node */}
-                            <div className={`absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-black border-2 z-10 transition-colors ${
-                                expandedIndex === i ? 'border-neon-blue shadow-[0_0_10px_#00f3ff]' : 'border-white/30'
-                            }`} />
+                <div className="relative">
+                    {/* Horizontal Line connecting nodes (visible on desktop) */}
+                    <div className="hidden md:block absolute top-[52px] left-0 right-0 h-[2px] bg-white/10 z-0" />
 
-                            <div 
-                                className={`group bg-neutral-900/40 border p-6 rounded-2xl transition-all duration-300 cursor-pointer hover:bg-neutral-800/60 ${
-                                    expandedIndex === i ? 'border-neon-blue/40 shadow-lg' : 'border-white/5 hover:border-white/20'
-                                }`}
-                                onClick={() => toggleAccordion(i)}
+                    {/* Horizontal Scroll Container */}
+                    <div className="flex overflow-x-auto gap-6 pb-12 pt-4 snap-x snap-mandatory px-4 md:px-8 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
+                        {experiences.map((exp, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: Math.min(i * 0.1, 0.5) }}
+                                viewport={{ margin: "-50px" }}
+                                className="relative shrink-0 w-[85vw] md:w-[420px] snap-center md:snap-start"
                             >
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                    <div className="flex items-start gap-4">
-                                        <div className={`mt-1 shrink-0 p-2 rounded-lg bg-white/5 ${expandedIndex === i ? 'text-neon-blue' : 'text-gray-400'}`}>
-                                            <exp.icon size={20} />
+                                {/* Timeline Node (Desktop only) */}
+                                <div className={`hidden md:block absolute -top-[4px] left-8 w-4 h-4 rounded-full bg-black border-2 z-10 transition-colors ${
+                                    expandedIndex === i ? 'border-neon-blue shadow-[0_0_10px_#00f3ff]' : 'border-white/30'
+                                }`} />
+
+                                <div 
+                                    className={`group bg-neutral-900/40 border p-6 rounded-3xl transition-all duration-300 cursor-pointer hover:bg-neutral-800/60 mt-0 md:mt-8 flex flex-col h-full ${
+                                        expandedIndex === i ? 'border-neon-blue/40 shadow-[0_0_30px_rgba(0,243,255,0.05)]' : 'border-white/5 hover:border-white/20'
+                                    }`}
+                                    onClick={() => toggleAccordion(i)}
+                                >
+                                    <div className="flex flex-col gap-4 mb-2">
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div className={`shrink-0 p-3 rounded-xl bg-white/5 ${expandedIndex === i ? 'text-neon-blue' : 'text-gray-400'}`}>
+                                                <exp.icon size={24} />
+                                            </div>
+                                            <span className="text-xs font-mono text-gray-500 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 shrink-0">
+                                                {exp.period}
+                                            </span>
                                         </div>
                                         <div>
-                                            <h3 className={`text-xl font-bold transition-colors ${expandedIndex === i ? 'text-white' : 'text-gray-300'}`}>
+                                            <h3 className={`text-xl font-bold leading-tight transition-colors ${expandedIndex === i ? 'text-white' : 'text-gray-300'}`}>
                                                 {exp.role}
                                             </h3>
                                             <p className="text-neon-blue text-sm font-medium mt-1">{exp.org}</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-4 text-right justify-between md:justify-end md:ml-auto">
-                                        <div className="flex flex-col items-start md:items-end gap-1">
-                                            <span className="text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded-full border border-white/10">
-                                                {exp.period}
-                                            </span>
-                                        </div>
+
+                                    <div className="mt-auto pt-4 flex items-center justify-between">
+                                        <span className="text-xs text-gray-500 font-mono">
+                                            {expandedIndex === i ? 'Close details' : 'View details'}
+                                        </span>
                                         <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${expandedIndex === i ? 'rotate-180 text-neon-blue' : ''}`} />
                                     </div>
-                                </div>
 
-                                <AnimatePresence>
-                                    {expandedIndex === i && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="overflow-hidden"
-                                        >
-                                            <div className="pt-6 mt-4 border-t border-white/10">
-                                                <div className="flex items-center gap-2 mb-4 text-xs font-mono text-gray-500">
-                                                    <Map size={14} /> {exp.loc}
+                                    <AnimatePresence>
+                                        {expandedIndex === i && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="pt-6 mt-4 border-t border-white/10">
+                                                    <div className="flex items-center gap-2 mb-4 text-xs font-mono text-gray-500">
+                                                        <Map size={14} /> {exp.loc}
+                                                    </div>
+                                                    <ul className="space-y-3">
+                                                        {exp.achievements.map((ach, a) => (
+                                                            <li key={a} className="text-gray-400 text-sm leading-relaxed flex items-start gap-3">
+                                                                <span className="text-neon-blue/50 mt-1">▹</span>
+                                                                <span className="flex-1">{ach}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
                                                 </div>
-                                                <ul className="space-y-3">
-                                                    {exp.achievements.map((ach, a) => (
-                                                        <li key={a} className="text-gray-400 text-sm leading-relaxed flex items-start gap-3">
-                                                            <span className="text-neon-blue/50 mt-1">▹</span>
-                                                            <span className="flex-1">{ach}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        </motion.div>
-                    ))}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

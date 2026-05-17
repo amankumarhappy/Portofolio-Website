@@ -5,7 +5,6 @@ import Projects from "@/components/sections/Projects";
 import Awards from "@/components/sections/Awards";
 import BeyondCode from "@/components/sections/BeyondCode";
 import Blogs from "@/components/sections/Blogs";
-import Vision from "@/components/sections/Vision";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Navbar from "@/components/layout/Navbar";
@@ -34,7 +33,6 @@ export default function Home() {
                     <Experience />
                     <BeyondCode />
                     <Blogs />
-                    <Vision />
                     <Contact />
                 </main>
             </SmoothScroll>

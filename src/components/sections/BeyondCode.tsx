@@ -20,10 +20,10 @@ const beyondItems = [
         emoji: "📚",
         title: "Pahal — Free Teaching",
         subtitle: "Every Monday · GEC Buxar",
-        desc: "Every Monday I walk into a classroom at GEC Buxar and teach Computer Science to Class 8–9 Hindi-medium school students — for free. Topics: computing basics, internet literacy, digital tools. All in Hindi. Because if tech is going to matter in Bihar, it has to start in classrooms.",
+        desc: "Every Monday I walk into a classroom at GEC Buxar and teach Computer Science to Class 8–9 Hindi-medium school students — for free. Topics: computing basics, internet literacy, digital tools. All in Hindi. Because if tech is going to matter in Bihar, it has to start in classrooms. (An Initiative by GEC Buxar)",
         tag: "Social Impact",
         tagColor: "#10b981",
-        stat: "50+ students reached",
+        stat: "20+ students reached",
     },
     {
         icon: Users,

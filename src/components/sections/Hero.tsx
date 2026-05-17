@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroScene from "../3d/HeroScene";
 import { ChevronDown, Download, MessageCircle, Trophy } from "lucide-react";
+import HeroScene from "../3d/HeroScene";
 import BuildingTicker from "../ui/BuildingTicker";
 
 export default function Hero() {
@@ -10,7 +10,7 @@ export default function Hero() {
         <>
             <section
                 id="hero"
-                className="relative w-full text-foreground flex flex-col items-center justify-center bg-hero"
+                className="relative w-full text-white flex flex-col items-center justify-center bg-black"
                 style={{ minHeight: "100vh", paddingBottom: "96px" }}
             >
                 {/* 3D Scene Background */}
@@ -32,19 +32,8 @@ export default function Hero() {
                     className="absolute inset-0 z-[2] pointer-events-none opacity-[0.03] flex items-center justify-end pr-12"
                     aria-hidden="true"
                 >
-                    <svg
-                        viewBox="0 0 400 500"
-                        width="400"
-                        height="500"
-                        fill="none"
-                        stroke="#00f3ff"
-                        strokeWidth="1.5"
-                    >
-                        {/* Simplified India outline path */}
+                    <svg viewBox="0 0 400 500" width="400" height="500" fill="none" stroke="#00f3ff" strokeWidth="1.5">
                         <path d="M200,20 C160,25 120,40 95,70 C70,100 55,130 50,165 C45,200 55,225 65,250 C75,275 70,295 75,315 C80,335 90,350 105,365 C120,380 130,400 140,420 C150,440 155,460 165,475 C175,490 185,498 200,500 C215,498 225,490 235,475 C245,460 250,440 260,420 C270,400 280,380 295,365 C310,350 320,335 325,315 C330,295 325,275 335,250 C345,225 355,200 350,165 C345,130 330,100 305,70 C280,40 240,25 200,20 Z" />
-                        <path d="M150,80 C170,70 190,65 200,65 C210,65 230,70 250,80" />
-                        <path d="M95,180 C80,195 75,215 78,235" />
-                        <path d="M305,180 C320,195 325,215 322,235" />
                         <circle cx="200" cy="240" r="8" fill="#00f3ff" opacity="0.5" />
                         <text x="185" y="265" fill="#00f3ff" fontSize="10" fontFamily="monospace">Buxar</text>
                     </svg>
@@ -120,36 +109,37 @@ export default function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* ── Text block ── */}
+                    {/* ── Text block — concise ── */}
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="flex flex-col items-center gap-3"
                     >
-                        <p className="text-sm md:text-base font-mono text-neon-blue mb-3 tracking-widest uppercase">
+                        <p className="text-sm md:text-base font-mono text-neon-blue tracking-widest uppercase">
                             Hello, I'm
                         </p>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-4 text-white drop-shadow-lg leading-none">
+                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-white drop-shadow-lg leading-none">
                             AMAN KUMAR <br className="md:hidden" /> HAPPY
                         </h1>
-                        <p className="text-base md:text-xl text-gray-300 font-light mb-3">
+                        <p className="text-base md:text-xl text-gray-300 font-light">
                             Student Founder ·{" "}
-                            <span className="text-neon-blue font-bold">Building Mediokart for Rural India</span>
+                            <span className="text-neon-blue font-bold">Building SAHAYAK</span>
                         </p>
-                        <p className="text-sm md:text-base text-gray-400 font-mono mb-3 max-w-2xl mx-auto leading-relaxed">
-                            "Building healthcare tools for the India that the internet forgot."
+                        <p className="text-sm text-gray-500 font-mono max-w-xl mx-auto leading-relaxed">
+                            Founder of Mediokart · Building SAHAYAK — a WhatsApp-based health assistant for elderly people
                         </p>
-                        <p className="text-sm text-gray-500 font-mono mb-10 max-w-xl mx-auto leading-relaxed">
-                            First-year B.Tech CSE student from Buxar, Bihar · Founder of Mediokart · Building SAHAYAK — a WhatsApp health assistant for rural India
+                        <p className="text-xs text-gray-600 font-mono">
+                            B.Tech CSE · GEC Buxar, Bihar · NexaForce
                         </p>
                     </motion.div>
 
-                    {/* ── CTA Buttons — only 2 ── */}
+                    {/* ── CTA Buttons ── */}
                     <motion.div
                         initial={{ opacity: 0, y: 14 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.7 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                        className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10"
                     >
                         <a
                             href="#projects"
@@ -186,7 +176,7 @@ export default function Hero() {
                 </motion.div>
             </section>
 
-            {/* Building in Public ticker — below hero */}
+            {/* Building in Public ticker */}
             <BuildingTicker />
         </>
     );

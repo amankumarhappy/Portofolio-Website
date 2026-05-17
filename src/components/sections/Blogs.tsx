@@ -213,6 +213,38 @@ export default function Blogs() {
                     Writing since 2020 — across five platforms. Not always on schedule. Always when I have something worth saying.
                 </motion.p>
 
+                {/* Featured Article */}
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    custom={2.2}
+                    className="mb-12"
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <span className="text-yellow-400 font-mono text-sm uppercase tracking-widest border border-yellow-400/30 px-3 py-1 rounded-full bg-yellow-400/10">
+                            🌟 Featured Read
+                        </span>
+                    </div>
+                    <a
+                        href="https://medium.com/@amankumarhappy/what-a-national-level-startup-bootcamp-taught-me-about-mvp-lean-canvas-and-real-execution-316a8d3663b4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block p-8 rounded-3xl border border-neon-blue/30 bg-neon-blue/5 hover:bg-neon-blue/10 hover:border-neon-blue/60 transition-all duration-300"
+                    >
+                        <h3 className="text-2xl md:text-3xl font-black text-white group-hover:text-neon-blue transition-colors mb-3">
+                            What a National-Level Startup Bootcamp Taught Me About MVP, Lean Canvas, and Real Execution
+                        </h3>
+                        <p className="text-gray-400 text-base leading-relaxed mb-4 max-w-4xl">
+                            My learnings from the AICTE-MoE IDE Bootcamp 2026. How we built SAHAYAK, pitched it to investors, and realized that execution matters more than ideas.
+                        </p>
+                        <span className="text-sm font-bold text-neon-blue flex items-center gap-2">
+                            Read Full Story <ExternalLink size={14} />
+                        </span>
+                    </a>
+                </motion.div>
+
                 {/* Live Articles — auto-fetched */}
                 {(loading || articles.length > 0) && (
                     <motion.div

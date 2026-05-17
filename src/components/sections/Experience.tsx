@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Award, Laptop2, Youtube, PenLine, MapPin, Cloud, Users, Trophy, BookOpen, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Trophy, Briefcase, Code, BookOpen, Users, Map, GraduationCap, ChevronDown, Award } from "lucide-react";
 
 const experiences = [
-    // ─── Awards & Achievements ───────────────────────────────────────
     {
         type: "award",
+        icon: Trophy,
         role: "National Winner — IDE Bootcamp 2026 Phase II",
         org: "AICTE × Ministry of Education",
         period: "April 2026",
@@ -19,6 +20,7 @@ const experiences = [
     },
     {
         type: "award",
+        icon: Award,
         role: "Intra-College Winner — Poster Making Competition",
         org: "UMANG'26 · GEC Buxar",
         period: "2026",
@@ -29,6 +31,7 @@ const experiences = [
     },
     {
         type: "award",
+        icon: Award,
         role: "Winner — Thrust Competition",
         org: "Techmiti Techfest · GEC Buxar",
         period: "2026",
@@ -37,9 +40,9 @@ const experiences = [
             "Won the Thrust competition at Techmiti Techfest, GEC Buxar's technical festival.",
         ]
     },
-    // ─── Founder & Work ──────────────────────────────────────────────
     {
         type: "work",
+        icon: Briefcase,
         role: "Founder & CEO",
         org: "Mediokart",
         period: "Jan 2025 - Present",
@@ -51,34 +54,9 @@ const experiences = [
             "Handling all aspects of a bootstrapped startup: product, pitching, partnerships, and community outreach.",
         ]
     },
-    // ─── Teaching Initiative ──────────────────────────────────────────
-    {
-        type: "teaching",
-        role: "Founder — Pahal Teaching Initiative",
-        org: "GEC Buxar (Self-Initiated)",
-        period: "2026 - Present",
-        loc: "Buxar, Bihar",
-        achievements: [
-            "Every Monday, teaches free Computer Science classes to Class 8–9 Hindi-medium school students at GEC Buxar.",
-            "Pahal is a personal initiative — because if tech is going to matter in Bihar, it has to start in classrooms.",
-            "Covers basics of computing, internet literacy, and digital tools in Hindi to make CS accessible.",
-        ]
-    },
-    // ─── Community Roles ─────────────────────────────────────────────
-    {
-        type: "salesforce",
-        role: "Core Team Member",
-        org: "Salesforce Community Bihar, India",
-        period: "Jan 2026 - Present",
-        loc: "Patna, Bihar, India · Hybrid",
-        achievements: [
-            "Serving as a Core Team Member of Salesforce Community Bihar, contributing to community growth and developer engagement.",
-            "Collaborating with peers to organize events, learning sessions, and awareness initiatives around Salesforce technologies.",
-            "Helping build a stronger tech ecosystem in Bihar by connecting students and developers with opportunities.",
-        ]
-    },
     {
         type: "community",
+        icon: Users,
         role: "Google Student Ambassador",
         org: "Google",
         period: "Sep 2025 - Dec 2025",
@@ -91,6 +69,7 @@ const experiences = [
     },
     {
         type: "community",
+        icon: Users,
         role: "Campus Ambassador",
         org: "Techfest, IIT Bombay",
         period: "Jul 2025 - Jan 2026",
@@ -101,31 +80,9 @@ const experiences = [
             "Guided interested students on registrations, timelines, and event details.",
         ]
     },
-    // ─── Hackathons ───────────────────────────────────────────────────
     {
         type: "hackathon",
-        role: "Participant — HackIndia Spark 6",
-        org: "SkillChain · Team NexaForce",
-        period: "2025",
-        loc: "New Delhi",
-        achievements: [
-            "Built SkillChain — blockchain credential verification on Polygon using Soulbound Tokens (SBTs).",
-            "Implemented tamper-proof academic certificate verification with IPFS storage.",
-        ]
-    },
-    {
-        type: "hackathon",
-        role: "Participant — Hackatron 3.0",
-        org: "NexFlow · BIT Sindri",
-        period: "2025",
-        loc: "BIT Sindri, Jharkhand",
-        achievements: [
-            "Built NexFlow — an AI workflow orchestration OS for intelligent multi-step process automation.",
-            "Turned rough ideas into structured, automated pipelines powered by LLMs.",
-        ]
-    },
-    {
-        type: "hackathon",
+        icon: Code,
         role: "Participant — Smart India Hackathon 2025",
         org: "Government of India",
         period: "2025",
@@ -136,6 +93,7 @@ const experiences = [
     },
     {
         type: "hackathon",
+        icon: Code,
         role: "Solo Participant — OpenEnv Hackathon",
         org: "MediTriage",
         period: "2025",
@@ -145,9 +103,9 @@ const experiences = [
             "Solo build: trained an RL agent to prioritize patient care based on severity and resource availability.",
         ]
     },
-    // ─── Internships & Programs ───────────────────────────────────────
     {
         type: "intern",
+        icon: Briefcase,
         role: "Data Analytics with LLMs Intern (AICTE Certified)",
         org: "Edunet Foundation / VOIS for Tech",
         period: "Sep 2025 - Oct 2025",
@@ -160,33 +118,8 @@ const experiences = [
         ]
     },
     {
-        type: "cloud",
-        role: "Participant (Cohort 1)",
-        org: "Google Cloud Arcade Facilitator Program",
-        period: "Jan 2025 - Aug 2025",
-        loc: "Buxar, Bihar, India",
-        achievements: [
-            "Selected for the Google Cloud Arcade Facilitator Program, a cohort-based upskilling initiative by Google.",
-            "Worked on hands-on labs and skill badges in Cloud Fundamentals (Compute Engine, IAM, Networking).",
-            "Explored Application Development on Cloud: APIs, Cloud Run, and CI/CD pipelines.",
-            "Gained AI/ML Essentials using Vertex AI & BigQuery.",
-        ]
-    },
-    {
-        type: "visitor",
-        role: "Business Visitor",
-        org: "Startup Mahakumbh 2025",
-        period: "Apr 2025",
-        loc: "New Delhi",
-        achievements: [
-            "Attended Startup Mahakumbh 2025 as a Business Visitor in New Delhi.",
-            "Interacted with startup founders, innovators, and ecosystem stakeholders.",
-            "Observed startup pitches, innovation showcases, and entrepreneurship initiatives.",
-        ]
-    },
-    // ─── Content ──────────────────────────────────────────────────────
-    {
         type: "creator",
+        icon: BookOpen,
         role: "YouTube Content Creator",
         org: "YouTube",
         period: "Feb 2022 - Present",
@@ -199,6 +132,7 @@ const experiences = [
     },
     {
         type: "writer",
+        icon: BookOpen,
         role: "Independent Blogger & Content Writer",
         org: "Medium / Quora / Blogspot",
         period: "Dec 2020 - Present",
@@ -209,9 +143,9 @@ const experiences = [
             "Published 20+ blog posts on Blogspot, experimenting with SEO and digital writing styles.",
         ]
     },
-    // ─── Education ────────────────────────────────────────────────────
     {
         type: "edu",
+        icon: GraduationCap,
         role: "B.Tech in Computer Science",
         org: "Government Engineering College, Buxar",
         period: "Jul 2025 - Sep 2029",
@@ -224,6 +158,7 @@ const experiences = [
     },
     {
         type: "edu",
+        icon: GraduationCap,
         role: "Higher Secondary Education (PCM)",
         org: "Vikramaditya Gita Mishra Senior Secondary School",
         period: "Jun 2023 - May 2025",
@@ -235,9 +170,15 @@ const experiences = [
 ];
 
 export default function Experience() {
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(0); // First item expanded by default
+
+    const toggleAccordion = (index: number) => {
+        setExpandedIndex(expandedIndex === index ? null : index);
+    };
+
     return (
         <section id="experience" className="py-24 bg-black text-white relative">
-            <div className="max-w-5xl mx-auto px-4">
+            <div className="max-w-4xl mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -250,9 +191,10 @@ export default function Experience() {
                     <h2 className="text-4xl md:text-6xl font-black text-white">
                         My <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple">Journey</span>
                     </h2>
+                    <p className="text-gray-400 mt-4 text-lg">Click on any path to open details about it.</p>
                 </motion.div>
 
-                <div className="relative border-l-2 border-white/10 ml-4 md:ml-12 space-y-16">
+                <div className="relative border-l-2 border-white/10 ml-4 md:ml-6 space-y-6">
                     {experiences.map((exp, i) => (
                         <motion.div
                             key={i}
@@ -260,45 +202,66 @@ export default function Experience() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: Math.min(i * 0.05, 0.4) }}
                             viewport={{ margin: "-100px" }}
-                            className="relative pl-8 md:pl-12"
+                            className="relative pl-6 md:pl-10"
                         >
                             {/* Timeline Node */}
-                            <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-black border-2 z-10 ${exp.type === 'award' ? 'border-yellow-400 shadow-[0_0_10px_#facc15]' : 'border-neon-blue shadow-[0_0_10px_#00f3ff]'}`} />
+                            <div className={`absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-black border-2 z-10 transition-colors ${
+                                expandedIndex === i ? 'border-neon-blue shadow-[0_0_10px_#00f3ff]' : 'border-white/30'
+                            }`} />
 
-                            <div className="group bg-neutral-900/40 border border-white/5 p-6 md:p-8 rounded-2xl hover:bg-neutral-800/60 hover:border-gray-700 transition-all duration-300">
-                                <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
-                                    <div>
-                                        <h3 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                                            {exp.type === 'award' && <Trophy size={20} className="text-yellow-400 shrink-0" />}
-                                            {exp.type === 'salesforce' && <Users size={20} className="text-blue-400 shrink-0" />}
-                                            {exp.type === 'work' && <Briefcase size={20} className="text-neon-blue shrink-0" />}
-                                            {exp.type === 'teaching' && <BookOpen size={20} className="text-emerald-400 shrink-0" />}
-                                            {exp.type === 'edu' && <GraduationCap size={20} className="text-neon-purple shrink-0" />}
-                                            {exp.type === 'community' && <Award size={20} className="text-neon-green shrink-0" />}
-                                            {exp.type === 'hackathon' && <Zap size={20} className="text-orange-400 shrink-0" />}
-                                            {exp.type === 'intern' && <Laptop2 size={20} className="text-yellow-400 shrink-0" />}
-                                            {exp.type === 'cloud' && <Cloud size={20} className="text-sky-400 shrink-0" />}
-                                            {exp.type === 'creator' && <Youtube size={20} className="text-red-500 shrink-0" />}
-                                            {exp.type === 'writer' && <PenLine size={20} className="text-orange-400 shrink-0" />}
-                                            {exp.type === 'visitor' && <MapPin size={20} className="text-pink-400 shrink-0" />}
-                                            {exp.role}
-                                        </h3>
-                                        <div className="text-lg text-neon-blue font-medium mt-1">{exp.org}</div>
+                            <div 
+                                className={`group bg-neutral-900/40 border p-6 rounded-2xl transition-all duration-300 cursor-pointer hover:bg-neutral-800/60 ${
+                                    expandedIndex === i ? 'border-neon-blue/40 shadow-lg' : 'border-white/5 hover:border-white/20'
+                                }`}
+                                onClick={() => toggleAccordion(i)}
+                            >
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div className="flex items-start gap-4">
+                                        <div className={`mt-1 shrink-0 p-2 rounded-lg bg-white/5 ${expandedIndex === i ? 'text-neon-blue' : 'text-gray-400'}`}>
+                                            <exp.icon size={20} />
+                                        </div>
+                                        <div>
+                                            <h3 className={`text-xl font-bold transition-colors ${expandedIndex === i ? 'text-white' : 'text-gray-300'}`}>
+                                                {exp.role}
+                                            </h3>
+                                            <p className="text-neon-blue text-sm font-medium mt-1">{exp.org}</p>
+                                        </div>
                                     </div>
-                                    <div className="md:text-right">
-                                        <div className="text-sm font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full inline-block">{exp.period}</div>
-                                        <div className="text-xs text-gray-500 mt-1">{exp.loc}</div>
+                                    <div className="flex items-center gap-4 text-right justify-between md:justify-end md:ml-auto">
+                                        <div className="flex flex-col items-start md:items-end gap-1">
+                                            <span className="text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded-full border border-white/10">
+                                                {exp.period}
+                                            </span>
+                                        </div>
+                                        <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${expandedIndex === i ? 'rotate-180 text-neon-blue' : ''}`} />
                                     </div>
                                 </div>
 
-                                <ul className="space-y-2 mt-4">
-                                    {exp.achievements.map((item, idx) => (
-                                        <li key={idx} className="flex items-start text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                                            <span className="mr-2 mt-1.5 w-1.5 h-1.5 bg-gray-600 rounded-full group-hover:bg-neon-blue transition-colors shrink-0"></span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <AnimatePresence>
+                                    {expandedIndex === i && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="pt-6 mt-4 border-t border-white/10">
+                                                <div className="flex items-center gap-2 mb-4 text-xs font-mono text-gray-500">
+                                                    <Map size={14} /> {exp.loc}
+                                                </div>
+                                                <ul className="space-y-3">
+                                                    {exp.achievements.map((ach, a) => (
+                                                        <li key={a} className="text-gray-400 text-sm leading-relaxed flex items-start gap-3">
+                                                            <span className="text-neon-blue/50 mt-1">▹</span>
+                                                            <span className="flex-1">{ach}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </motion.div>
                     ))}

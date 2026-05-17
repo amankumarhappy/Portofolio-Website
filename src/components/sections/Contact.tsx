@@ -164,13 +164,13 @@ export default function Contact() {
                         custom={2}
                         className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm hover:border-white/20 transition-colors"
                     >
-                        <form className="space-y-5">
+                        <form action="https://formspree.io/f/xvgrypek" method="POST" className="space-y-5">
                             <div>
                                 <label className="block text-xs font-mono text-gray-500 mb-2 uppercase tracking-widest">Name</label>
                                 <input
                                     type="text"
-                                    id="contact-name"
                                     name="name"
+                                    required
                                     className="w-full bg-black/50 border border-white/10 rounded-xl py-4 px-5 focus:border-neon-blue focus:outline-none transition-colors text-white placeholder-gray-600"
                                     placeholder="John Doe"
                                 />
@@ -179,8 +179,8 @@ export default function Contact() {
                                 <label className="block text-xs font-mono text-gray-500 mb-2 uppercase tracking-widest">Email</label>
                                 <input
                                     type="email"
-                                    id="contact-email"
                                     name="email"
+                                    required
                                     className="w-full bg-black/50 border border-white/10 rounded-xl py-4 px-5 focus:border-neon-blue focus:outline-none transition-colors text-white placeholder-gray-600"
                                     placeholder="john@example.com"
                                 />
@@ -189,8 +189,8 @@ export default function Contact() {
                                 <label className="block text-xs font-mono text-gray-500 mb-2 uppercase tracking-widest">Message</label>
                                 <textarea
                                     rows={4}
-                                    id="contact-message"
                                     name="message"
+                                    required
                                     className="w-full bg-black/50 border border-white/10 rounded-xl py-4 px-5 focus:border-neon-blue focus:outline-none transition-colors text-white resize-none placeholder-gray-600"
                                     placeholder="Let's build something meaningful..."
                                 />

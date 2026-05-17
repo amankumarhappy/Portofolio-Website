@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const keywords = ["AI", "HEALTHCARE", "INDIA", "IMPACT", "RURAL"];
+const keywords = ["AI", "IMPACT", "HEALTHCARE"];
 
 export default function Vision() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -29,11 +29,11 @@ export default function Vision() {
                     viewport={{ once: true }}
                     className="text-neon-blue font-mono tracking-widest uppercase text-sm mb-8"
                 >
-                    07. / What I'm Building Toward
+                    08. / Mission
                 </motion.p>
 
                 <h2 className="text-[12vw] md:text-[10vw] font-black leading-none text-white tracking-tighter mix-blend-difference mb-12">
-                    VISION
+                    MISSION
                 </h2>
 
                 {/* Mission statement */}
@@ -44,7 +44,10 @@ export default function Vision() {
                     viewport={{ once: true }}
                     className="mb-12 max-w-3xl mx-auto"
                 >
-                    <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-6">
+                    <p className="text-sm md:text-base font-mono text-neon-blue uppercase tracking-widest mb-4">
+                        Mission is to Build AI IMPACT HEALTHCARE
+                    </p>
+                    <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-4">
                         I'm building{" "}
                         <span className="text-neon-blue font-bold">Mediokart</span>{" "}
                         and{" "}
@@ -54,22 +57,16 @@ export default function Vision() {
                     <p className="text-2xl md:text-3xl text-white font-black leading-tight">
                         Make quality healthcare accessible to{" "}
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple">
-                            rural and elderly India
+                            elderly and rural India
                         </span>{" "}
                         — the India that the internet forgot.
                     </p>
+                    <p className="text-gray-500 text-sm font-mono mt-4">
+                        SAHAYAK is the first product under Mediokart.
+                    </p>
                 </motion.div>
 
-                {/* Mission description */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="text-gray-400 text-lg max-w-2xl mx-auto mb-14 leading-relaxed"
-                >
-                    SAHAYAK works on WhatsApp because that's where people already are. No app download. No login. Just a message — and MBBS-reviewed health guidance in Hindi and Bhojpuri, instantly. That's what accessible technology looks like.
-                </motion.p>
+
 
                 {/* Keywords */}
                 <div className="flex flex-col md:flex-row gap-6 md:gap-10 justify-center flex-wrap">

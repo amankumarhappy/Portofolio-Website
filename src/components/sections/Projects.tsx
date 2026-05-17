@@ -6,13 +6,14 @@ import { ExternalLink, Bot, Box, HeartPulse, Zap, Shield, MessageCircle, Trophy,
 // ─── SAHAYAK — Hero Project ─────────────────────────────────────────────────
 const sahayak = {
     title: "SAHAYAK",
-    tagline: "WhatsApp Health Assistant for Rural India",
-    desc: "WhatsApp-based digital health assistant for rural and elderly India. MBBS-reviewed first-aid guidance in Hindi & Bhojpuri. Zero app download. Zero account creation. Just WhatsApp — the one app every Indian already knows. Built to serve the 70%+ people in rural Bihar who lack easy access to basic health guidance.",
-    problem: "In rural Bihar, 70%+ people lack easy access to basic health guidance. Hospitals are far, doctors are expensive, and internet apps require literacy barriers most don't have.",
+    tagline: "WhatsApp Health Assistant for Elderly People",
+    desc: "A WhatsApp-based health assistant designed for elderly people who miss medicines — now with a prescription reminder system. Simply upload a prescription and SAHAYAK sets medicine reminders with caretaker support. MBBS-reviewed health guidance in Hindi & Bhojpuri. Zero app. Zero login. Just WhatsApp.",
+    status: "Prototype Stage",
+    problem: "Elderly people miss their medicines — and that's where SAHAYAK comes in. Upload a prescription, SAHAYAK sets the reminders, and caretakers get notified. Simple, WhatsApp-native, no app needed.",
     howItWorks: [
-        "User sends a WhatsApp message describing their symptom",
-        "SAHAYAK processes via Python + WhatsApp Business API",
-        "MBBS-reviewed guidance sent back in Hindi or Bhojpuri",
+        "Upload prescription on WhatsApp — SAHAYAK reads it",
+        "Automatic medicine reminders set for patient & caretaker",
+        "MBBS-reviewed health guidance in Hindi or Bhojpuri",
     ],
     tags: ["Python", "WhatsApp Business API", "Google Sheets API", "Telegram Bot API"],
     icon: MessageCircle,
@@ -24,40 +25,11 @@ const sahayak = {
     github: "https://github.com/amankumarhappy/sahayakbot",
 };
 
-// ─── Hackathon Builds ────────────────────────────────────────────────────────
-const hackathonProjects = [
-    {
-        title: "SkillChain",
-        role: "Built in 24-48 hours at HackIndia Spark 6",
-        desc: "Blockchain credential verification on Polygon using Soulbound Tokens (SBTs). Tamper-proof academic certificates — verify any credential instantly with full transparency. Team NexaForce.",
-        tags: ["Blockchain", "Web3", "Polygon", "SBT"],
-        icon: Shield,
-        color: "#8b5cf6",
-        glow: "rgba(139,92,246,0.30)",
-        link: "https://newdelhihackathon.vercel.app/",
-        status: "live",
-        event: "HackIndia Spark 6 · New Delhi · Team NexaForce",
-        note: "Note: Solidity/IPFS parts were handled by teammates. My contributions: frontend, pitch, project planning.",
-    },
-    {
-        title: "NexFlow",
-        role: "Built in 24-48 hours at Hackatron 3.0",
-        desc: "AI workflow orchestration OS — intelligent multi-step process automation. Turns rough ideas into structured, automated pipelines.",
-        tags: ["AI", "Automation", "LLMs", "Workflow"],
-        icon: Zap,
-        color: "#a855f7",
-        glow: "rgba(168,85,247,0.25)",
-        link: "https://nexfellow.vercel.app/",
-        status: "live",
-        event: "Hackatron 3.0, BIT Sindri, Jharkhand",
-        note: null,
-    },
-];
 
 // ─── Mediokart Ecosystem ─────────────────────────────────────────────────────
 const mediokartEcosystem = {
-    desc: "Mediokart is my bootstrapped healthtech startup — building accessible healthcare tools for rural India, starting with SAHAYAK. Founded in January 2025 before I even entered college.",
-    tags: ["Python", "WhatsApp API", "Google Sheets", "Vercel", "Render.com"],
+    desc: "Mediokart is my bootstrapped healthtech startup — building healthcare tools starting with SAHAYAK (first product). Founded in January 2025 before I even entered college.",
+    tags: ["Python", "WhatsApp API", "Google Sheets", "Vercel"],
     link: "https://www.mediokart.in",
     roadmap: [
         {
@@ -235,105 +207,6 @@ export default function Projects() {
                     </div>
                 </motion.div>
 
-                {/* ─── Hackathon Builds ─── */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="mb-6"
-                >
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="flex-1 h-px bg-gradient-to-r from-neon-purple/50 to-transparent" />
-                        <span className="text-neon-purple font-black text-xl tracking-wider px-4 py-2 border border-neon-purple/20 rounded-full bg-neon-purple/5">
-                            ⚡ Hackathon Builds
-                        </span>
-                        <div className="flex-1 h-px bg-gradient-to-l from-neon-purple/50 to-transparent" />
-                    </div>
-                </motion.div>
-
-                <div className="space-y-6 mb-16">
-                    {hackathonProjects.map((project, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: i * 0.1 }}
-                            viewport={{ once: true, margin: "-80px" }}
-                            className="group relative rounded-3xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-500"
-                            style={{ background: `linear-gradient(135deg, #0d0d0d 60%, ${project.glow})` }}
-                        >
-                            <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                                style={{ background: `radial-gradient(circle at 20% 50%, ${project.glow}, transparent 70%)` }}
-                            />
-                            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8 p-8 md:p-10">
-                                {/* Icon */}
-                                <div
-                                    className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center border border-white/10 bg-white/5 group-hover:scale-110 transition-transform duration-300"
-                                    style={{ boxShadow: `0 0 30px ${project.glow}` }}
-                                >
-                                    <project.icon size={28} color={project.color} />
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                                        <h3 className="text-2xl md:text-3xl font-black text-white">{project.title}</h3>
-                                        <span
-                                            className="text-xs font-mono px-3 py-1 rounded-full border"
-                                            style={{ color: project.color, borderColor: `${project.color}40`, background: `${project.color}10` }}
-                                        >
-                                            {project.role}
-                                        </span>
-                                        {project.status === "live" && (
-                                            <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-full border border-emerald-400/40 bg-emerald-400/10 text-emerald-400">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                                Live Demo
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="text-xs font-mono text-gray-500 mb-2">📍 {project.event}</p>
-                                    <p className="text-gray-400 text-sm leading-relaxed mb-3 max-w-2xl group-hover:text-gray-300 transition-colors">
-                                        {project.desc}
-                                    </p>
-                                    {project.note && (
-                                        <p className="text-xs font-mono text-amber-400/70 mb-4 border border-amber-400/20 bg-amber-400/5 rounded-lg px-3 py-2 w-fit">
-                                            ⚠️ {project.note}
-                                        </p>
-                                    )}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag, t) => (
-                                            <span
-                                                key={t}
-                                                className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-gray-400"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Live Demo CTA */}
-                                {project.status === "live" && (
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl border font-bold text-sm tracking-wider transition-all duration-300 hover:scale-105"
-                                        style={{
-                                            color: project.color,
-                                            borderColor: `${project.color}40`,
-                                            background: `${project.color}10`,
-                                        }}
-                                    >
-                                        <ExternalLink size={16} />
-                                        Live Demo
-                                    </a>
-                                )}
-                            </div>
-                        </motion.div>
-                    ))}
                 </div>
 
                 {/* ─── Mediokart Ecosystem ─── */}

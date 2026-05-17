@@ -207,8 +207,6 @@ export default function Projects() {
                     </div>
                 </motion.div>
 
-                </div>
-
                 {/* ─── Mediokart Ecosystem ─── */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

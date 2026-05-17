@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { Trophy, Briefcase, Code, BookOpen, Users, Map, GraduationCap, ChevronDown, Award } from "lucide-react";
+import { useState, useRef } from "react";
+import { Trophy, Briefcase, Code, BookOpen, Users, Map, GraduationCap, ChevronDown, Award, ChevronLeft, ChevronRight } from "lucide-react";
 
 const experiences = [
     {
@@ -21,7 +21,7 @@ const experiences = [
     {
         type: "award",
         icon: Award,
-        role: "Intra-College Winner — Poster Making Competition",
+        role: "Intra-College Winner — Poster Making",
         org: "UMANG'26 · GEC Buxar",
         period: "2026",
         loc: "Government Engineering College, Buxar",
@@ -94,7 +94,7 @@ const experiences = [
     {
         type: "hackathon",
         icon: Code,
-        role: "Solo Participant — OpenEnv Hackathon",
+        role: "Solo Participant — OpenEnv",
         org: "MediTriage",
         period: "2025",
         loc: "Remote · Solo",
@@ -106,7 +106,7 @@ const experiences = [
     {
         type: "intern",
         icon: Briefcase,
-        role: "Data Analytics with LLMs Intern (AICTE Certified)",
+        role: "Data Analytics with LLMs Intern",
         org: "Edunet Foundation / VOIS for Tech",
         period: "Sep 2025 - Oct 2025",
         loc: "Buxar",
@@ -133,7 +133,7 @@ const experiences = [
     {
         type: "writer",
         icon: BookOpen,
-        role: "Independent Blogger & Content Writer",
+        role: "Independent Blogger & Writer",
         org: "Medium / Quora / Blogspot",
         period: "Dec 2020 - Present",
         loc: "Buxar, Bihar, India",
@@ -149,7 +149,7 @@ const experiences = [
         role: "B.Tech in Computer Science",
         org: "Government Engineering College, Buxar",
         period: "Jul 2025 - Sep 2029",
-        loc: "Buxar — Affiliated to Bihar Engineering University, Patna",
+        loc: "Buxar",
         achievements: [
             "Focus on Computer Science fundamentals with hands-on startup execution.",
             "Actively building projects and prototypes alongside coursework.",
@@ -160,7 +160,7 @@ const experiences = [
         type: "edu",
         icon: GraduationCap,
         role: "Higher Secondary Education (PCM)",
-        org: "Vikramaditya Gita Mishra Senior Secondary School",
+        org: "VG Mishra Senior Secondary School",
         period: "Jun 2023 - May 2025",
         loc: "Bihar",
         achievements: [
@@ -170,110 +170,158 @@ const experiences = [
 ];
 
 export default function Experience() {
-    const [expandedIndex, setExpandedIndex] = useState<number | null>(0); // First item expanded by default
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     const toggleAccordion = (index: number) => {
         setExpandedIndex(expandedIndex === index ? null : index);
     };
 
+    const scroll = (direction: 'left' | 'right') => {
+        if (scrollRef.current) {
+            const { clientWidth } = scrollRef.current;
+            const scrollAmount = direction === 'left' ? -clientWidth / 1.5 : clientWidth / 1.5;
+            scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    };
+
     return (
-        <section id="experience" className="py-24 bg-black text-white relative">
-            <div className="max-w-4xl mx-auto px-4 relative z-10">
+        <section id="experience" className="py-32 bg-black text-white relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-neon-blue/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-neon-purple/5 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-16 text-center md:text-left"
                 >
                     <p className="text-neon-blue font-mono tracking-widest uppercase text-sm mb-4">
                         04. / Timeline
                     </p>
-                    <h2 className="text-4xl md:text-6xl font-black text-white">
+                    <h2 className="text-5xl md:text-7xl font-black text-white leading-tight">
                         My <span className="bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple">Journey</span>
                     </h2>
-                    <p className="text-gray-400 mt-4 text-lg">Click on any path to open details about it.</p>
+                    <p className="text-gray-400 mt-4 text-lg">Scroll to explore my journey. Click any node to view details.</p>
                 </motion.div>
 
-                <div className="relative">
-                    {/* Horizontal Line connecting nodes (visible on desktop) */}
-                    <div className="hidden md:block absolute top-[52px] left-0 right-0 h-[2px] bg-white/10 z-0" />
+                {/* Horizontal Journey Timeline */}
+                <div className="relative group">
+                    {/* Navigation Buttons (Desktop) */}
+                    <button 
+                        onClick={() => scroll('left')} 
+                        className="hidden md:flex absolute -left-6 top-[220px] z-30 bg-black/80 backdrop-blur-md border border-white/20 p-4 rounded-full hover:bg-white/10 hover:border-neon-blue text-white hover:text-neon-blue transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                    >
+                        <ChevronLeft size={28} />
+                    </button>
+                    <button 
+                        onClick={() => scroll('right')} 
+                        className="hidden md:flex absolute -right-6 top-[220px] z-30 bg-black/80 backdrop-blur-md border border-white/20 p-4 rounded-full hover:bg-white/10 hover:border-neon-blue text-white hover:text-neon-blue transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                    >
+                        <ChevronRight size={28} />
+                    </button>
 
-                    {/* Horizontal Scroll Container */}
-                    <div className="flex overflow-x-auto gap-6 pb-12 pt-4 snap-x snap-mandatory px-4 md:px-8 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20">
-                        {experiences.map((exp, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: Math.min(i * 0.1, 0.5) }}
-                                viewport={{ margin: "-50px" }}
-                                className="relative shrink-0 w-[85vw] md:w-[420px] snap-center md:snap-start"
-                            >
-                                {/* Timeline Node (Desktop only) */}
-                                <div className={`hidden md:block absolute -top-[4px] left-8 w-4 h-4 rounded-full bg-black border-2 z-10 transition-colors ${
-                                    expandedIndex === i ? 'border-neon-blue shadow-[0_0_10px_#00f3ff]' : 'border-white/30'
-                                }`} />
+                    {/* Scroll Container */}
+                    <div 
+                        ref={scrollRef} 
+                        className="overflow-x-auto pb-12 pt-8 snap-x snap-mandatory hide-scrollbar scroll-smooth"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                        <div className="relative flex gap-8 px-4 md:px-12 w-max items-start">
+                            {/* Connecting Line */}
+                            <div className="absolute top-[34px] left-8 right-8 h-[3px] bg-gradient-to-r from-white/5 via-white/20 to-white/5 z-0" />
 
-                                <div 
-                                    className={`group bg-neutral-900/40 border p-6 rounded-3xl transition-all duration-300 cursor-pointer hover:bg-neutral-800/60 mt-0 md:mt-8 flex flex-col h-full ${
-                                        expandedIndex === i ? 'border-neon-blue/40 shadow-[0_0_30px_rgba(0,243,255,0.05)]' : 'border-white/5 hover:border-white/20'
-                                    }`}
-                                    onClick={() => toggleAccordion(i)}
+                            {experiences.map((exp, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: Math.min(i * 0.05, 0.3) }}
+                                    viewport={{ margin: "-50px" }}
+                                    className="relative shrink-0 w-[85vw] md:w-[380px] snap-center flex flex-col items-center"
                                 >
-                                    <div className="flex flex-col gap-4 mb-2">
-                                        <div className="flex items-start justify-between gap-4">
-                                            <div className={`shrink-0 p-3 rounded-xl bg-white/5 ${expandedIndex === i ? 'text-neon-blue' : 'text-gray-400'}`}>
-                                                <exp.icon size={24} />
+                                    {/* The Node (Square/Circle on the line) */}
+                                    <div 
+                                        onClick={() => toggleAccordion(i)}
+                                        className={`w-16 h-16 rounded-2xl md:rounded-full bg-black border-[3px] z-10 flex items-center justify-center mb-8 transition-all duration-300 cursor-pointer hover:scale-110 ${
+                                            expandedIndex === i 
+                                            ? 'border-neon-blue shadow-[0_0_25px_rgba(0,243,255,0.4)] scale-110' 
+                                            : 'border-white/20 hover:border-white/50 hover:bg-white/5'
+                                        }`}
+                                    >
+                                        <exp.icon size={26} className={expandedIndex === i ? 'text-neon-blue' : 'text-gray-400'} />
+                                    </div>
+
+                                    {/* The Card */}
+                                    <div 
+                                        className={`w-full text-left bg-neutral-900/40 border p-6 rounded-3xl transition-all duration-500 cursor-pointer hover:bg-neutral-800/60 flex flex-col ${
+                                            expandedIndex === i 
+                                            ? 'border-neon-blue/40 shadow-[0_0_30px_rgba(0,243,255,0.05)] bg-neutral-800/40' 
+                                            : 'border-white/5 hover:border-white/20'
+                                        }`}
+                                        onClick={() => toggleAccordion(i)}
+                                    >
+                                        <div className="flex flex-col gap-4 mb-2">
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs font-mono text-neon-blue bg-neon-blue/10 px-3 py-1.5 rounded-full border border-neon-blue/20">
+                                                    {exp.period}
+                                                </span>
                                             </div>
-                                            <span className="text-xs font-mono text-gray-500 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 shrink-0">
-                                                {exp.period}
+                                            <div>
+                                                <h3 className={`text-xl font-bold leading-tight transition-colors ${expandedIndex === i ? 'text-white' : 'text-gray-300'}`}>
+                                                    {exp.role}
+                                                </h3>
+                                                <p className="text-gray-400 text-sm font-medium mt-1">{exp.org}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-4 pt-4 flex items-center justify-between border-t border-white/5">
+                                            <span className="text-xs text-gray-500 font-mono transition-colors group-hover:text-gray-300">
+                                                {expandedIndex === i ? 'Close details' : 'View details'}
                                             </span>
+                                            <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${expandedIndex === i ? 'rotate-180 text-neon-blue' : ''}`} />
                                         </div>
-                                        <div>
-                                            <h3 className={`text-xl font-bold leading-tight transition-colors ${expandedIndex === i ? 'text-white' : 'text-gray-300'}`}>
-                                                {exp.role}
-                                            </h3>
-                                            <p className="text-neon-blue text-sm font-medium mt-1">{exp.org}</p>
-                                        </div>
-                                    </div>
 
-                                    <div className="mt-auto pt-4 flex items-center justify-between">
-                                        <span className="text-xs text-gray-500 font-mono">
-                                            {expandedIndex === i ? 'Close details' : 'View details'}
-                                        </span>
-                                        <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${expandedIndex === i ? 'rotate-180 text-neon-blue' : ''}`} />
-                                    </div>
-
-                                    <AnimatePresence>
-                                        {expandedIndex === i && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
-                                                className="overflow-hidden"
-                                            >
-                                                <div className="pt-6 mt-4 border-t border-white/10">
-                                                    <div className="flex items-center gap-2 mb-4 text-xs font-mono text-gray-500">
-                                                        <Map size={14} /> {exp.loc}
+                                        <AnimatePresence>
+                                            {expandedIndex === i && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="pt-6 mt-2">
+                                                        <div className="flex items-center gap-2 mb-4 text-xs font-mono text-gray-400/80">
+                                                            <Map size={14} /> {exp.loc}
+                                                        </div>
+                                                        <ul className="space-y-3">
+                                                            {exp.achievements.map((ach, a) => (
+                                                                <li key={a} className="text-gray-300 text-sm leading-relaxed flex items-start gap-3">
+                                                                    <span className="text-neon-blue mt-1">▹</span>
+                                                                    <span className="flex-1">{ach}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
                                                     </div>
-                                                    <ul className="space-y-3">
-                                                        {exp.achievements.map((ach, a) => (
-                                                            <li key={a} className="text-gray-400 text-sm leading-relaxed flex items-start gap-3">
-                                                                <span className="text-neon-blue/50 mt-1">▹</span>
-                                                                <span className="flex-1">{ach}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </motion.div>
-                        ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+
+                {/* Hide scrollbar CSS */}
+                <style dangerouslySetInnerHTML={{__html: `
+                    .hide-scrollbar::-webkit-scrollbar {
+                        display: none;
+                    }
+                `}} />
             </div>
         </section>
     );

@@ -2,9 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
-import Awards from "@/components/sections/Awards";
 import BeyondCode from "@/components/sections/BeyondCode";
-import Blogs from "@/components/sections/Blogs";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Navbar from "@/components/layout/Navbar";
@@ -20,19 +18,13 @@ export default function Home() {
                 <ScrollUI />
                 <CustomCursor />
                 <Navbar />
-                {/*
-                  CRITICAL: NO overflow-hidden here — that was causing the scroll "page jump".
-                  Sections flow naturally in document order.
-                */}
                 <main className="flex flex-col bg-section">
                     <Hero />
                     <About />
                     <Skills />
                     <Projects />
-                    <Awards />
                     <Experience />
                     <BeyondCode />
-                    <Blogs />
                     <Contact />
                 </main>
             </SmoothScroll>

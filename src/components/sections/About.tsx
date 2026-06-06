@@ -1,79 +1,161 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { GraduationCap, HeartPulse, Trophy, Users, Youtube } from "lucide-react";
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-    }),
-};
+const cards = [
+    {
+        icon: GraduationCap,
+        title: "CSE Student",
+        text: "Government Engineering College, Buxar",
+    },
+    {
+        icon: HeartPulse,
+        title: "Healthtech Builder",
+        text: "SAHAYAK",
+    },
+    {
+        icon: Trophy,
+        title: "National Winner",
+        text: "AICTE x MoE IDE Bootcamp 2026",
+    },
+];
 
 const stats = [
-    { value: "🏆 1", label: "National Win", sub: "IDE Bootcamp 2026" },
-    { value: "82+", label: "YouTube Videos", sub: "30K+ lifetime views" },
-    { value: "314+", label: "Quora Answers", sub: "30K+ content views" },
-    { value: "701+", label: "LinkedIn Followers", sub: "Growing community" },
+    { icon: Trophy, value: 1, suffix: "", label: "National Win", sub: "IDE Bootcamp 2026" },
+    { icon: Youtube, value: 82, suffix: "+", label: "YouTube Videos", sub: "30K+ lifetime views" },
+    { icon: Users, value: 314, suffix: "+", label: "Quora Answers", sub: "30K+ content views" },
+    { icon: Users, value: 701, suffix: "+", label: "LinkedIn Followers", sub: "Growing community" },
 ];
+
+let audioUnlocked = false;
+let audioContext: AudioContext | null = null;
+
+if (typeof window !== "undefined") {
+    window.addEventListener(
+        "pointerdown",
+        () => {
+            audioUnlocked = true;
+        },
+        { once: true }
+    );
+}
+
+function playCountTick() {
+    if (!audioUnlocked) return;
+
+    const AudioContextClass = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextClass) return;
+
+    audioContext = audioContext || new AudioContextClass();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = 620;
+    gain.gain.value = 0.018;
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.035);
+}
+
+function CountStat({ stat, index }: { stat: (typeof stats)[number]; index: number }) {
+    const ref = useRef<HTMLDivElement>(null);
+    const inView = useInView(ref, { once: true, margin: "-80px" });
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (!inView) return;
+
+        const duration = 1150;
+        const started = performance.now();
+        let lastTick = 0;
+        let frame = 0;
+
+        const animate = (now: number) => {
+            const progress = Math.min((now - started) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.round(stat.value * eased));
+
+            if (now - lastTick > 145 && progress < 0.96) {
+                lastTick = now;
+                playCountTick();
+            }
+
+            if (progress < 1) {
+                frame = requestAnimationFrame(animate);
+            }
+        };
+
+        frame = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(frame);
+    }, [inView, stat.value]);
+
+    return (
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.06, duration: 0.45 }}
+            className="compact-card stat-card p-5"
+        >
+            <stat.icon className="mb-4 text-neon-blue" size={22} />
+            <div className="text-3xl font-black text-foreground">
+                {count}
+                {stat.suffix}
+            </div>
+            <div className="mt-1 text-sm font-black text-foreground">{stat.label}</div>
+            <div className="mt-1 text-xs font-mono text-muted">{stat.sub}</div>
+        </motion.div>
+    );
+}
 
 export default function About() {
     return (
-        <section id="about" className="py-32 bg-section-alt min-h-screen flex items-center justify-center relative overflow-hidden">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-neon-blue/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-20 right-10 w-72 h-72 bg-neon-purple/10 rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="max-w-5xl w-full px-6 relative z-10">
-                <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
-                    className="text-neon-blue font-mono tracking-widest uppercase text-sm mb-4">
-                    01. / Who Am I?
-                </motion.p>
-
-                <motion.h2 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1}
-                    className="text-4xl md:text-6xl font-black leading-tight text-foreground mb-10">
-                    Aman Kumar Happy —{" "}
-                    <span className="relative inline-block px-1">
-                        <span className="absolute inset-x-0 bottom-2 h-3 bg-neon-blue/30 -skew-x-12 -z-10" />
-                        From Buxar, Bihar
-                    </span>{" "}
-                    to Building for Bharat.
-                </motion.h2>
-
-                {/* Concise Intro */}
-                <motion.ul variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2}
-                    className="mb-8 space-y-6 text-lg md:text-xl text-muted font-light">
-                    <li className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-blue/30 transition-colors">
-                        <span className="text-neon-blue text-2xl mt-0.5">✦</span>
-                        <p>
-                            <strong className="text-white">Founder & Student:</strong> B.Tech CSE at GEC Buxar. Building <strong className="text-neon-blue">Mediokart</strong> to solve real healthcare problems in India.
+        <section id="about" className="section-compact bg-section-alt text-foreground">
+            <div className="mx-auto max-w-6xl px-6">
+                <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.55 }}
+                    >
+                        <p className="section-kicker">01. / Who Am I?</p>
+                        <h2 className="mt-3 text-4xl font-black leading-tight tracking-normal text-foreground md:text-6xl">
+                            Aman Kumar Happy
+                        </h2>
+                        <p className="mt-4 max-w-xl text-sm leading-7 text-muted md:text-base">
+                            I build practical tools, contribute to open source, and keep my work focused on people who need simple technology.
                         </p>
-                    </li>
-                    <li className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-blue/30 transition-colors">
-                        <span className="text-neon-blue text-2xl mt-0.5">✦</span>
-                        <p>
-                            <strong className="text-white">Current Focus:</strong> Building <strong className="text-neon-blue">SAHAYAK</strong> — a WhatsApp-based health assistant for the elderly. (National Winner, IDE Bootcamp 2026).
-                        </p>
-                    </li>
-                    <li className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-blue/30 transition-colors">
-                        <span className="text-neon-blue text-2xl mt-0.5">✦</span>
-                        <p>
-                            <strong className="text-white">Beyond Code:</strong> Creating content (YouTube/Quora), and writing about my journey.
-                        </p>
-                    </li>
-                </motion.ul>
+                    </motion.div>
 
-                {/* Stats grid */}
-                <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={4}
-                    className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {stats.map((stat, i) => (
-                        <div key={i} className="p-5 bg-card rounded-2xl border border-card-border hover:border-neon-blue/30 transition-all duration-300 hover:bg-card-hover text-center">
-                            <div className="text-neon-blue font-black text-xl md:text-2xl mb-1 leading-tight">{stat.value}</div>
-                            <div className="text-foreground text-sm font-semibold mb-0.5">{stat.label}</div>
-                            <div className="text-muted text-xs font-mono">{stat.sub}</div>
-                        </div>
+                    <div className="grid gap-4 sm:grid-cols-3">
+                        {cards.map((card, index) => (
+                            <motion.div
+                                key={card.title}
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08, duration: 0.45 }}
+                                className="compact-card p-5"
+                            >
+                                <card.icon className="mb-5 text-neon-blue" size={26} />
+                                <h3 className="text-base font-black text-foreground">{card.title}</h3>
+                                <p className="mt-2 text-sm leading-6 text-muted">{card.text}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {stats.map((stat, index) => (
+                        <CountStat key={stat.label} stat={stat} index={index} />
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

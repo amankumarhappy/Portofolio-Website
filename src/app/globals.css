@@ -421,6 +421,165 @@ section {
   transform: translateY(-2px);
 }
 
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.6);
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Waggle Embed Styles */
+.waggle-embed-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.waggle-iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+/* AI Tool Chip Styles */
+.ai-tool-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-tool-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
+}
+
+/* Now Card Styles */
+.now-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.now-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 0%, rgba(0, 229, 255, 0.08), transparent 34%),
+              radial-gradient(circle at 100% 20%, rgba(168, 85, 247, 0.06), transparent 32%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.now-card:hover::before {
+  opacity: 1;
+}
+
+/* Founder Dashboard */
+.founder-dashboard {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-dashboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(0, 229, 255, 0.1), transparent 50%),
+              radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.1), transparent 50%);
+  pointer-events: none;
+}
+
+/* Grain Texture Overlay */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Sticky Section Transitions */
+.sticky-section {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Magnetic Button Base */
+[data-magnetic] {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 @media (max-width: 767px) {
   .hero-image-stage {
     min-height: 390px;
@@ -429,5 +588,10 @@ section {
   .hero-image-card {
     inset: 0;
     transform: translateZ(18px);
+  }
+
+  .ai-tool-chip {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
   }
 }

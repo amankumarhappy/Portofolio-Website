@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Now from "@/components/sections/Now";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import BeyondCode from "@/components/sections/BeyondCode";
@@ -21,6 +22,7 @@ export default function Home() {
                 <main className="flex flex-col bg-section">
                     <Hero />
                     <About />
+                    <Now />
                     <Skills />
                     <Projects />
                     <Experience />

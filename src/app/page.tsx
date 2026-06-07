@@ -4,6 +4,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import BeyondCode from "@/components/sections/BeyondCode";
 import Experience from "@/components/sections/Experience";
+import Now from "@/components/sections/Now";
 import Contact from "@/components/sections/Contact";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
@@ -25,6 +26,7 @@ export default function Home() {
                     <Projects />
                     <Experience />
                     <BeyondCode />
+                    <Now />
                     <Contact />
                 </main>
             </SmoothScroll>

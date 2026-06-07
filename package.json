@@ -1,43 +1,16 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
-  "dependencies": {
-    "@react-three/drei": "^9.96.1",
-    "@react-three/fiber": "^8.15.12",
-    "@studio-freight/react-lenis": "^0.0.47",
-    "clsx": "^2.1.0",
-    "framer-motion": "^12.29.2",
-    "git": "^0.1.5",
-    "gsap": "^3.12.5",
-    "lenis": "^1.0.42",
-    "lucide-react": "^0.309.0",
-    "next": "^14.2.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.0",
-    "tech-stack-icons": "^3.5.8",
-    "three": "^0.160.0"
-  },
+  "private": true,
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "^18.3.27",
-    "@types/react-dom": "^18.3.7",
-    "@types/three": "^0.160.0",
-    "autoprefixer": "^10.4.23",
-    "eslint": "latest",
-    "eslint-config-next": "^14.2.3",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.1",
-    "typescript": "latest"
-  },
-  "optionalDependencies": {
-    "@next/swc-win32-x64-msvc": "^14.2.3"
+    "prettier": "^3.8.3",
+    "typescript": "~5.9.3"
   }
 }

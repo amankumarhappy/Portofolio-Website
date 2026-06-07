@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./app/globals.css";
-import "./index.css";
 
 const themeScript = `
 (function() {

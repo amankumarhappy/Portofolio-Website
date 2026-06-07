@@ -89,18 +89,6 @@ const groups = [
             { label: "Community Driven", symbol: "people" },
         ],
     },
-    {
-        title: "Web Stack",
-        className: "md:col-span-6",
-        skills: [
-            { label: "Next.js", logo: logos.nextjs },
-            { label: "React", logo: logos.react },
-            { label: "Tailwind CSS", logo: logos.tailwind },
-            { label: "Framer Motion", symbol: "motion" },
-            { label: "FastAPI", symbol: "api" },
-            { label: "PostgreSQL", symbol: "db" },
-        ],
-    },
 ];
 
 const aiTools = [
@@ -258,7 +246,7 @@ export default function Skills() {
                         <h2 className="mt-3 text-4xl font-black text-foreground md:text-5xl">Build Stack in Motion</h2>
                     </div>
                     <p className="max-w-md text-sm leading-6 text-muted">
-                        Icon-first stack map for building, learning, shipping, and contributing.
+                        Tools and technologies I use to build, learn, and ship.
                     </p>
                 </motion.div>
 
@@ -306,35 +294,6 @@ export default function Skills() {
                     </div>
                 </motion.div>
 
-                {/* Impact Counters */}
-                <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.24, duration: 0.45 }}
-                    className="mt-8 grid gap-4 md:grid-cols-5"
-                >
-                    {[
-                        { label: "National Win", value: "1", icon: "🏆" },
-                        { label: "Open Source", value: "5+", icon: "🐙" },
-                        { label: "Content Views", value: "30K+", icon: "👁️" },
-                        { label: "Followers", value: "750+", icon: "👥" },
-                        { label: "Shipped", value: "3+", icon: "🚀" },
-                    ].map((counter, index) => (
-                        <motion.div
-                            key={counter.label}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.24 + index * 0.04, duration: 0.35 }}
-                            className="compact-card p-4 text-center group hover:border-neon-blue"
-                        >
-                            <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">{counter.icon}</div>
-                            <div className="text-2xl font-black text-foreground">{counter.value}</div>
-                            <div className="mt-1 text-xs font-bold uppercase tracking-widest text-muted">{counter.label}</div>
-                        </motion.div>
-                    ))}
-                </motion.div>
             </div>
         </section>
     );

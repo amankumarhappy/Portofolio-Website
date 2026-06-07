@@ -578,6 +578,118 @@ section {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ---- Flip Card ---- */
+.flip-card-root {
+  position: absolute;
+  inset: 1rem 0 1rem 0;
+  perspective: 1200px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ---- Section entrance shimmer ---- */
+@keyframes shimmer-in {
+  0% { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
+}
+
+/* ---- Cursor hide on mobile ---- */
+@media (hover: none) {
+  .fixed[style*="z-index: 9999"] { display: none; }
+}
+
+/* ---- Glowing border animation ---- */
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0,229,255,0.2); box-shadow: 0 0 0px rgba(0,229,255,0); }
+  50%       { border-color: rgba(0,229,255,0.55); box-shadow: 0 0 22px rgba(0,229,255,0.18); }
+}
+
+.compact-card:hover {
+  animation: none;
+}
+
+/* ---- Live section backgrounds ---- */
+.section-live-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-live-bg::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(0,229,255,0.03), rgba(168,85,247,0.03), rgba(34,197,94,0.03), rgba(0,229,255,0.03));
+  animation: spin-slow 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- About photo flip ---- */
+.photo-flip-root {
+  perspective: 900px;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.photo-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: 50%;
+}
+
+.photo-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(0,229,255,0.35);
+  box-shadow: 0 0 30px rgba(0,229,255,0.15);
+}
+
+.photo-flip-back-face {
+  transform: rotateY(180deg);
+}
+
+.photo-flip-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  display: block;
+}
+
+.photo-flip-root:hover .photo-flip-face {
+  border-color: rgba(0,229,255,0.65);
+  box-shadow: 0 0 44px rgba(0,229,255,0.28);
+}
+
 @media (max-width: 767px) {
   .hero-image-stage {
     min-height: 390px;

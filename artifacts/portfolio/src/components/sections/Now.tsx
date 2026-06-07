@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Brain, Rocket, ExternalLink } from "lucide-react";
+import { Zap, Brain, Rocket } from "lucide-react";
 
 const nowItems = [
     {
@@ -87,7 +87,7 @@ export default function Now() {
                                 ))}
                             </ul>
 
-                            {/* Waggle MCP LinkedIn Embed */}
+                            {/* Waggle MCP badge */}
                             {section.title === "Shipping Next" && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 8 }}
@@ -97,25 +97,17 @@ export default function Now() {
                                     className="mt-6 pt-6 border-t border-card-border"
                                 >
                                     <p className="text-xs font-bold uppercase tracking-widest text-neon-blue mb-3">Waggle MCP</p>
-                                    <div className="waggle-embed-container rounded-lg overflow-hidden border border-card-border bg-card-bg-hover">
-                                        <iframe
-                                            src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7467221111680954369"
-                                            height="300"
-                                            width="100%"
-                                            frameBorder="0"
-                                            allowFullScreen
-                                            title="Waggle MCP - Open Source Project"
-                                            className="waggle-iframe"
-                                        />
+                                    <div className="flex items-center gap-3 p-3 rounded-lg border border-card-border bg-card-bg-hover">
+                                        <span className="text-2xl">🐙</span>
+                                        <div>
+                                            <p className="text-sm font-black text-foreground">Active Project</p>
+                                            <p className="text-xs text-muted">Open Source · MCP Protocol</p>
+                                        </div>
+                                        <span className="ml-auto flex items-center gap-1 text-xs font-bold text-neon-green">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
+                                            Live
+                                        </span>
                                     </div>
-                                    <a
-                                        href="https://github.com/Abhigyan-Shekhar/Waggle-mcp"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-neon-blue hover:text-neon-purple transition-colors"
-                                    >
-                                        Know more <ExternalLink size={12} />
-                                    </a>
                                 </motion.div>
                             )}
                         </motion.div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { MouseEvent, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download, Github, Sparkles } from "lucide-react";
 import HeroScene from "../3d/HeroScene";
 
@@ -22,6 +22,7 @@ const textVariants = {
 export default function Hero() {
     const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
     const [scrollY, setScrollY] = useState(0);
+    const [flipped, setFlipped] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -39,11 +40,11 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="relative min-h-[92vh] overflow-hidden bg-hero text-hero-foreground">
+        <section id="hero" className="relative min-h-[82vh] overflow-hidden bg-hero text-hero-foreground">
             <HeroScene />
             <div className="absolute inset-0 z-[1] bg-hero-overlay" />
 
-            <div className="relative z-10 mx-auto grid min-h-[92vh] max-w-6xl items-center gap-10 px-6 pb-16 pt-28 md:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative z-10 mx-auto grid min-h-[82vh] max-w-6xl items-center gap-10 px-6 pb-12 pt-24 md:grid-cols-[0.9fr_1.1fr]">
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -53,6 +54,8 @@ export default function Hero() {
                     <motion.div
                         className="mb-5 inline-flex items-center gap-2 rounded-full border border-hero-border bg-hero-chip px-4 py-2 text-xs font-bold uppercase tracking-widest text-neon-blue"
                         whileHover={{ scale: 1.05 }}
+                        animate={{ boxShadow: ["0 0 0px rgba(0,229,255,0)", "0 0 18px rgba(0,229,255,0.45)", "0 0 0px rgba(0,229,255,0)"] }}
+                        transition={{ boxShadow: { duration: 2.5, repeat: Infinity } }}
                     >
                         <Sparkles size={14} />
                         National Winner - IDE Bootcamp 2026
@@ -141,6 +144,7 @@ export default function Hero() {
                     </motion.div>
                 </motion.div>
 
+                {/* Flip Card */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.92, y: 24 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -152,14 +156,58 @@ export default function Hero() {
                         transform: `perspective(1100px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateY(${scrollY * 0.1}px)`,
                     }}
                 >
-                    <div className="hero-image-card liquid-hover">
-                        <img
-                            src="/aman-healthtech-hero.png"
-                            alt="Aman Kumar Happy building healthtech and coding"
-                            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                        />
-                        <div className="hero-image-shine" />
+                    {/* Click hint */}
+                    <AnimatePresence>
+                        {!flipped && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ delay: 1.2, duration: 0.4 }}
+                                className="absolute top-2 right-2 z-20 flex items-center gap-1.5 rounded-full border border-hero-border bg-hero-chip px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-neon-blue"
+                            >
+                                <span className="animate-pulse">✦</span> Tap to flip
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Flip wrapper */}
+                    <div
+                        className="flip-card-root cursor-pointer"
+                        onClick={() => setFlipped(f => !f)}
+                    >
+                        <motion.div
+                            className="flip-card-inner"
+                            animate={{ rotateY: flipped ? 180 : 0 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            style={{ transformStyle: "preserve-3d" }}
+                        >
+                            {/* Front */}
+                            <div className="flip-card-face flip-card-front">
+                                <div className="hero-image-card liquid-hover" style={{ position: "absolute", inset: 0 }}>
+                                    <img
+                                        src="/aman-healthtech-hero.png"
+                                        alt="Aman Kumar Happy building healthtech"
+                                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                                    />
+                                    <div className="hero-image-shine" />
+                                </div>
+                            </div>
+
+                            {/* Back */}
+                            <div className="flip-card-face flip-card-back">
+                                <div className="hero-image-card liquid-hover" style={{ position: "absolute", inset: 0 }}>
+                                    <img
+                                        src="/aman-coding-desk.png"
+                                        alt="Aman Kumar Happy coding at his desk"
+                                        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                                    />
+                                    <div className="hero-image-shine" />
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
+
                     <div className="hero-floating-badge top-6 left-5">Code</div>
                     <div className="hero-floating-badge bottom-7 right-5">Care</div>
                     <div className="hero-depth-line" />

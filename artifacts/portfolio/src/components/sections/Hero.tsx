@@ -62,7 +62,7 @@ export default function Hero() {
                     </motion.div>
 
                     <motion.h1
-                        className="text-balance text-5xl font-black leading-[0.95] tracking-normal text-hero-foreground md:text-7xl"
+                        className="text-balance text-5xl font-black leading-tight tracking-normal text-hero-foreground md:text-7xl"
                         style={{ y: scrollY * 0.3 } as any}
                     >
                         <motion.span
@@ -72,16 +72,10 @@ export default function Hero() {
                             variants={textVariants as any}
                             className="block"
                         >
-                            Aman Kumar
-                        </motion.span>
-                        <motion.span
-                            custom={1}
-                            initial="hidden"
-                            animate="visible"
-                            variants={textVariants as any}
-                            className="block bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent"
-                        >
-                            Happy
+                            Aman Kumar{" "}
+                            <span className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent">
+                                Happy
+                            </span>
                         </motion.span>
                     </motion.h1>
 

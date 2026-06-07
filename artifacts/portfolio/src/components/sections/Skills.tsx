@@ -202,37 +202,6 @@ export default function Skills() {
             </div>
 
             <div className="mx-auto max-w-6xl px-6 relative z-10">
-                {/* Founder Dashboard */}
-                <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.55 }}
-                    className="mb-12 founder-dashboard compact-card p-6 border-2 border-neon-blue border-opacity-30"
-                >
-                    <div className="grid gap-6 md:grid-cols-4">
-                        <motion.div whileHover={{ scale: 1.02 }} className="flex flex-col gap-2">
-                            <p className="text-xs font-bold uppercase tracking-widest text-neon-blue">Active Project</p>
-                            <p className="text-lg font-black text-foreground">{founderDashboard.activeProject}</p>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.02 }} className="flex flex-col gap-2">
-                            <p className="text-xs font-bold uppercase tracking-widest text-neon-purple">Current Focus</p>
-                            <p className="text-lg font-black text-foreground">{founderDashboard.currentFocus}</p>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.02 }} className="flex flex-col gap-2">
-                            <p className="text-xs font-bold uppercase tracking-widest text-neon-green">Open Source</p>
-                            <p className="text-lg font-black text-foreground">{founderDashboard.openSource}</p>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.02 }} className="flex flex-col gap-2">
-                            <p className="text-xs font-bold uppercase tracking-widest text-neon-blue">Status</p>
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
-                                <p className="text-lg font-black text-foreground">{founderDashboard.status}</p>
-                            </div>
-                        </motion.div>
-                    </div>
-                </motion.div>
-
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 18 }}
@@ -243,7 +212,7 @@ export default function Skills() {
                 >
                     <div>
                         <p className="section-kicker">02. / Tech Stack</p>
-                        <h2 className="mt-3 text-4xl font-black text-foreground md:text-5xl">Build Stack in Motion</h2>
+                        <h2 className="mt-3 text-4xl font-black text-foreground md:text-5xl">Technical Stacks</h2>
                     </div>
                     <p className="max-w-md text-sm leading-6 text-muted">
                         Tools and technologies I use to build, learn, and ship.

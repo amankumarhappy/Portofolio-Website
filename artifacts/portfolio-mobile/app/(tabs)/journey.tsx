@@ -1,4 +1,4 @@
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef } from "react";
 import {
   Animated,
@@ -52,35 +52,6 @@ const journey = [
     text: "GirlScript Summer of Code. Actively contributing to open source.",
     darkColor: "#a855f7",
     lightColor: "#7c3aed",
-  },
-];
-
-const nowItems = [
-  {
-    icon: "zap" as const,
-    title: "Building This Month",
-    items: [
-      "SAHAYAK MVP v2 — Enhanced WhatsApp health flows",
-      "Mediokart — Scaling healthtech for rural India",
-    ],
-  },
-  {
-    icon: "book-open" as const,
-    title: "Learning Now",
-    items: [
-      "Python Web Dev — Django & FastAPI",
-      "JavaScript — Frontend interactivity",
-      "Open Source contribution workflows",
-    ],
-  },
-  {
-    icon: "send" as const,
-    title: "Shipping Next",
-    items: [
-      "SAHAYAK public beta",
-      "Waggle-MCP v2 features",
-      "'Building in Public' YouTube series",
-    ],
   },
 ];
 
@@ -166,33 +137,6 @@ export default function JourneyScreen() {
         ))}
       </View>
 
-      <View style={styles.nowSection}>
-        <Text style={[styles.kicker, { color: colors.primary }]}>01.5 / NOW</Text>
-        <Text style={[styles.heading, { color: colors.foreground }]}>What's Happening</Text>
-        <View style={styles.nowGrid}>
-          {nowItems.map((section) => (
-            <View
-              key={section.title}
-              style={[styles.nowCard, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}
-            >
-              <View style={styles.nowCardHeader}>
-                <View style={[styles.nowIconBox, { borderColor: colors.primary, backgroundColor: colors.background }]}>
-                  <Feather name={section.icon} size={18} color={colors.primary} />
-                </View>
-                <Text style={[styles.nowCardTitle, { color: colors.foreground }]}>{section.title}</Text>
-              </View>
-              <View style={styles.nowItems}>
-                {section.items.map((item, i) => (
-                  <View key={i} style={styles.nowItem}>
-                    <View style={[styles.nowDot, { backgroundColor: colors.primary }]} />
-                    <Text style={[styles.nowItemText, { color: colors.mutedForeground }]}>{item}</Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-          ))}
-        </View>
-      </View>
     </ScrollView>
   );
 }
@@ -221,14 +165,4 @@ const styles = StyleSheet.create({
   yearText: { fontSize: 10, fontFamily: "Inter_700Bold", letterSpacing: 0.5 },
   journeyTitle: { fontSize: 16, fontFamily: "Inter_700Bold", marginBottom: 4 },
   journeyText: { fontSize: 13, fontFamily: "Inter_400Regular", lineHeight: 19 },
-  nowSection: { marginBottom: 16 },
-  nowGrid: { gap: 12 },
-  nowCard: { borderRadius: 14, borderWidth: 1, padding: 16 },
-  nowCardHeader: { flexDirection: "row", alignItems: "center", gap: 10, marginBottom: 12 },
-  nowIconBox: { width: 36, height: 36, borderRadius: 10, borderWidth: 1.5, alignItems: "center", justifyContent: "center" },
-  nowCardTitle: { fontSize: 15, fontFamily: "Inter_700Bold", flex: 1 },
-  nowItems: { gap: 8 },
-  nowItem: { flexDirection: "row", alignItems: "flex-start", gap: 8 },
-  nowDot: { width: 6, height: 6, borderRadius: 3, marginTop: 7, flexShrink: 0 },
-  nowItemText: { fontSize: 13, fontFamily: "Inter_400Regular", lineHeight: 20, flex: 1 },
 });

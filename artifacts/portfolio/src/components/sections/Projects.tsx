@@ -109,36 +109,17 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
                 ))}
             </div>
 
-            {/* Waggle MCP LinkedIn Embed */}
             {project.hasEmbed && (
-                <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2, duration: 0.45 }}
-                    className="mt-6 pt-6 border-t border-card-border"
-                >
-                    <p className="text-xs font-bold uppercase tracking-widest text-neon-blue mb-3">Featured Update</p>
-                    <div className="waggle-embed-container rounded-lg overflow-hidden border border-card-border bg-card-bg-hover max-h-96">
-                        <iframe
-                            src={project.embedUrl}
-                            height="350"
-                            width="100%"
-                            frameBorder="0"
-                            allowFullScreen
-                            title="Waggle MCP - Open Source Project Update"
-                            className="waggle-iframe w-full"
-                        />
-                    </div>
+                <div className="mt-5 pt-5 border-t border-card-border">
                     <a
                         href="https://github.com/Abhigyan-Shekhar/Waggle-mcp"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-neon-blue hover:text-neon-purple transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-card-border px-3 py-1.5 text-xs font-bold text-neon-blue hover:border-neon-blue hover:bg-card-hover transition-all"
                     >
-                        Know more about this project <ExternalLink size={12} />
+                        Know more about this project <ExternalLink size={11} />
                     </a>
-                </motion.div>
+                </div>
             )}
         </motion.article>
     );

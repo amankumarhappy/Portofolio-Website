@@ -114,8 +114,6 @@ function CountStat({ stat, index }: { stat: (typeof stats)[number]; index: numbe
 }
 
 export default function About() {
-    const [photoFlipped, setPhotoFlipped] = useState(false);
-
     return (
         <section id="about" className="section-compact bg-section-alt text-foreground">
             <div className="mx-auto max-w-6xl px-6">
@@ -134,27 +132,6 @@ export default function About() {
                             I build practical tools, contribute to open source, and keep my work focused on people who need simple technology.
                         </p>
 
-                        {/* Flippable profile photo */}
-                        <motion.div
-                            className="mt-6 photo-flip-root"
-                            onClick={() => setPhotoFlipped(f => !f)}
-                            title="Click to flip"
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <motion.div
-                                className="photo-flip-inner"
-                                animate={{ rotateY: photoFlipped ? 180 : 0 }}
-                                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <div className="photo-flip-face">
-                                    <img src="/My photo.png" alt="Aman Kumar Happy" />
-                                </div>
-                                <div className="photo-flip-face photo-flip-back-face">
-                                    <img src="/aman-formal.jpg" alt="Aman Kumar Happy — formal" style={{ objectPosition: "50% 10%" }} />
-                                </div>
-                            </motion.div>
-                        </motion.div>
-                        <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-muted opacity-60">Tap photo to flip</p>
                     </motion.div>
 
                     <div className="grid gap-4 sm:grid-cols-3">

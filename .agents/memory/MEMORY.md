@@ -1,0 +1,1 @@
+- [Portfolio migration](portfolio-migration.md) — Next.js → React+Vite migration patterns and gotchas for this project

@@ -12,7 +12,6 @@ const navLinks = [
     { label: "Projects", id: "projects" },
     { label: "Journey", id: "experience" },
     { label: "Beyond", id: "beyond" },
-    { label: "Now", id: "now" },
     { label: "Contact", id: "contact" },
 ];
 

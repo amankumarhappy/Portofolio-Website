@@ -26,7 +26,7 @@ const stats = [
     { icon: Trophy, value: 1, suffix: "", label: "National Win", sub: "IDE Bootcamp 2026" },
     { icon: Youtube, value: 82, suffix: "+", label: "YouTube Videos", sub: "30K+ lifetime views" },
     { icon: Users, value: 314, suffix: "+", label: "Quora Answers", sub: "30K+ content views" },
-    { icon: Users, value: 701, suffix: "+", label: "LinkedIn Followers", sub: "Growing community" },
+    { icon: Users, value: 750, suffix: "+", label: "LinkedIn Followers", sub: "Growing community" },
 ];
 
 let audioUnlocked = false;

@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/portfolio-mobile/"
+title = "Aman Kumar Happy — Mobile"
+version = "1.0.0"
+id = "artifacts/portfolio-mobile"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/portfolio-mobile/" ]
+localPort = 21133
+
+[services.development]
+run = "pnpm --filter @workspace/portfolio-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/portfolio-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/portfolio-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "21133"
+BASE_PATH = "/portfolio-mobile/"

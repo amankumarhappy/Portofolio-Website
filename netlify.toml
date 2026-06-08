@@ -1,0 +1,7 @@
+[build]
+  command   = "pnpm --filter @workspace/portfolio run build"
+  publish   = "artifacts/portfolio/dist/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "10"

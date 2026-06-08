@@ -72,9 +72,9 @@ export default function Hero() {
                             variants={textVariants as any}
                             className="block"
                         >
-                            Aman Kumar{" "}
+                            Aman Kumar Happy{" "}
                             <span className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent">
-                                Happy
+                                
                             </span>
                         </motion.span>
                     </motion.h1>

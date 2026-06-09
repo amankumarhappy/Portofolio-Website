@@ -79,7 +79,13 @@ export default function Hero() {
                             initial="hidden"
                             animate="visible"
                             variants={textVariants as any}
-                            className="block bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent"
+                            className="block"
+                            style={{
+                                background: "linear-gradient(to right, var(--neon-blue), var(--neon-purple), var(--neon-green))",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                            }}
                         >
                             Happy
                         </motion.span>

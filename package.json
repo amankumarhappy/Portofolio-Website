@@ -14,3 +14,7 @@
     "typescript": "~5.9.3"
   }
 }
+
+"scripts": {
+  "build": "vite build"  // or "react-scripts build" / "next build"
+}

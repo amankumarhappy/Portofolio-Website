@@ -52,7 +52,12 @@ export default function Navbar() {
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <a href="/" className="flex items-center gap-1 font-black tracking-normal text-foreground" data-cursor="hover">
                     <span>Aman Kumar&nbsp;</span>
-                    <span className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green bg-clip-text text-transparent">Happy</span>
+                    <span style={{
+                        background: "linear-gradient(to right, var(--neon-blue), var(--neon-purple), var(--neon-green))",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                    }}>Happy</span>
                 </a>
 
                 <div className="hidden items-center gap-1 md:flex">
